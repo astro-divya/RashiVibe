@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Muhurat | RashiVibe</title>
+<meta name="description" content="Shubh Muhurat date shortlist for marriage, vehicle purchase, Griha Pravesh and naming.">
+<meta name="theme-color" content="#fff6e8">
+<link rel="icon" href="assets/rashivibe-icon.png">
+<link rel="stylesheet" href="assets/rashivibe.css">
+<script src="assets/account.js" defer></script>
+</head>
+<body>
+<div class="topbar"><div class="container"><span class="brandline" data-hi="ॐ • RashiVibe • Your Stars. Your Story." data-en="ॐ • RashiVibe • Your Stars. Your Story.">ॐ • RashiVibe • Your Stars. Your Story.</span><span id="liveClock"></span></div></div>
+<header><div class="container nav">
+<a class="brand" href="index.html" aria-label="RashiVibe home"><img src="assets/rashivibe-logo.png" alt="RashiVibe"></a>
+<nav class="navlinks" id="navlinks"><a href="index.html" class="" data-hi="होम" data-en="Home">होम</a><a href="free-kundli.html" class="" data-hi="कुंडली" data-en="Kundli">कुंडली</a><a href="kundli-matching.html" class="" data-hi="कुंडली मिलान" data-en="Kundli Matching">कुंडली मिलान</a><a href="rashifal/index.html" class="" data-hi="राशिफल" data-en="Rashifal">राशिफल</a><a href="numerology.html" class="" data-hi="अंक ज्योतिष" data-en="Numerology">अंक ज्योतिष</a><a href="panchang.html" class="" data-hi="पंचांग" data-en="Panchang">पंचांग</a><a href="sade-sati.html" class="" data-hi="साढ़े साती" data-en="Sade Sati">साढ़े साती</a><a href="muhurat.html" class="active" data-hi="मुहूर्त" data-en="Muhurat">मुहूर्त</a><a href="ratna-salah.html" class="" data-hi="रत्न सलाह" data-en="Gemstone Advice">रत्न सलाह</a></nav>
+<a id="rvProfilePill" class="rv-profile-pill" href="login.html" data-title-hi="लॉगिन / प्रोफाइल" data-title-en="Login / Profile"><span class="rv-profile-dot">●</span><span data-hi="लॉगिन" data-en="Login">लॉगिन</span></a><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">ENG</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
+</div></header>
+<main><section class="section"><div class="container"><div class="section-title"><span class="badge">Marriage • Vehicle • Griha Pravesh • Naming</span><h1 data-hi="शुभ मुहूर्त" data-en="Shubh Muhurat">शुभ मुहूर्त</h1><p data-hi="महीना और कार्य चुनें; तिथि, नक्षत्र और वार के आधार पर प्रारंभिक शुभ तारीखें देखें।" data-en="Choose a month and purpose to shortlist dates using Tithi, Nakshatra and weekday rules.">महीना और कार्य चुनें; तिथि, नक्षत्र और वार के आधार पर प्रारंभिक शुभ तारीखें देखें।</p></div>
+<div class="form-card"><h2 data-hi="व्यक्तिगत जन्म विवरण" data-en="Personal Birth Details">व्यक्तिगत जन्म विवरण</h2><div class="form-grid"><div class="field"><label data-hi="नाम" data-en="Name">नाम</label><input id="mbName" placeholder="नाम"></div><div class="field"><label data-hi="जन्म तिथि (DD / MM / YYYY)" data-en="Birth date (DD / MM / YYYY)">जन्म तिथि (DD / MM / YYYY)</label><div class="date-row"><input id="mbD" type="text" inputmode="numeric" maxlength="2" placeholder="DD"><input id="mbM" type="text" inputmode="numeric" maxlength="2" placeholder="MM"><input id="mbY" type="text" inputmode="numeric" maxlength="4" placeholder="YYYY"></div><small id="mbDatePreview" class="date-confirm">DD / MM / YYYY</small></div><div class="field"><label data-hi="जन्म समय" data-en="Birth time">जन्म समय</label><input id="mbTime" type="time" value="12:00"></div><div class="field"><label data-hi="जन्म स्थान" data-en="Birth place">जन्म स्थान</label><input id="mbPlace" placeholder="शहर लिखें…"><div id="mbSuggest" class="suggestions"></div></div></div><details class="advanced"><summary data-hi="जन्म स्थान: Advanced" data-en="Birth place: Advanced">जन्म स्थान: Advanced</summary><div class="form-grid three"><div class="field"><label>Latitude</label><input id="mbLat"></div><div class="field"><label>Longitude</label><input id="mbLon"></div><div class="field"><label>Timezone</label><input id="mbTz" value="Asia/Kolkata"></div></div></details><hr><h2 data-hi="मुहूर्त की जरूरत" data-en="Muhurat Requirement">मुहूर्त की जरूरत</h2><div class="form-grid"><div class="field"><label data-hi="कार्य" data-en="Purpose">कार्य</label><select id="muType"><option value="marriage" data-hi="विवाह" data-en="Marriage">विवाह</option><option value="vehicle" data-hi="वाहन खरीद" data-en="Vehicle Purchase">वाहन खरीद</option><option value="griha" data-hi="गृह प्रवेश" data-en="Griha Pravesh">गृह प्रवेश</option><option value="naming" data-hi="नामकरण" data-en="Naming">नामकरण</option></select></div><div class="field"><label data-hi="महीना" data-en="Month">महीना</label><input id="muMonth" type="month"></div><div class="field full"><label data-hi="कार्य का स्थान" data-en="Event location">कार्य का स्थान</label><input id="muPlace" value="New Delhi, India"><div id="muSuggest" class="suggestions"></div></div></div><details class="advanced"><summary>Event location: Advanced</summary><div class="form-grid three"><div class="field"><label>Latitude</label><input id="muLat" value="28.6139"></div><div class="field"><label>Longitude</label><input id="muLon" value="77.2090"></div><div class="field"><label>Timezone</label><input id="muTz" value="Asia/Kolkata"></div></div></details><div class="cta"><button id="muBtn" class="btn primary" data-hi="✨ मेरी शुभ तारीखें देखें" data-en="✨ Find My Auspicious Dates">✨ मेरी शुभ तारीखें देखें</button></div><div id="muResult" class="result hidden"></div></div>
+</div></section></main>
+<footer><div class="container footer-grid">
+<div><img src="assets/rashivibe-logo.png" alt="RashiVibe" style="width:230px"><p data-hi="आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।" data-en="Traditional Vedic astrology with a modern experience.">आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।</p></div>
+<div><h3 data-hi="महत्वपूर्ण" data-en="Important">महत्वपूर्ण</h3><div class="footer-links"><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a><a href="privacy.html" data-hi="गोपनीयता" data-en="Privacy">गोपनीयता</a><a href="disclaimer.html" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a><a href="terms.html" data-hi="नियम" data-en="Terms">नियम</a><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></div></div>
+<div><h3>RashiVibe</h3><p>© 2026 RashiVibe</p></div>
+</div></footer>
+
+<script>
+(()=> {
+  const root=document.documentElement;
+  let lang=localStorage.getItem('rvLang')||'hi';
+  function applyLang(){
+    root.lang=lang;
+    document.querySelectorAll('[data-hi][data-en]').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(el.matches('input[placeholder]')) el.placeholder=val;
+      else if(val && val.includes('<')) el.innerHTML=val;
+      else el.textContent=val;
+    });
+    document.querySelectorAll('[data-title-hi][data-title-en]').forEach(el=>el.title=el.getAttribute('data-title-'+lang));
+    const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='hi'?'ENG':'हिंदी';
+    document.dispatchEvent(new CustomEvent('rv-language',{detail:{lang}}));
+  }
+  window.RVLang=()=>lang;
+  window.RVT=(hi,en)=>lang==='hi'?hi:en;
+  window.RVSetLang=()=>{lang=lang==='hi'?'en':'hi';localStorage.setItem('rvLang',lang);applyLang()};
+  document.addEventListener('DOMContentLoaded',()=>{
+    applyLang();
+    const lb=document.getElementById('langBtn');if(lb)lb.onclick=RVSetLang;
+    const mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');if(mb&&nl){mb.onclick=()=>{const open=nl.classList.toggle('open');mb.setAttribute('aria-expanded',String(open));};nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('open');mb.setAttribute('aria-expanded','false');}));}
+    const clock=document.getElementById('liveClock');
+    function tick(){
+      if(!clock)return;
+      const now=new Date(),loc=lang==='hi'?'hi-IN':'en-IN';
+      clock.textContent=new Intl.DateTimeFormat(loc,{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+    }
+    tick();setInterval(tick,1000);
+  });
+})();
+</script>
+
+<script>
+const RVAstro=(()=>{
+const Z_HI=['मेष','वृषभ','मिथुन','कर्क','सिंह','कन्या','तुला','वृश्चिक','धनु','मकर','कुंभ','मीन'];
+const Z_EN=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const NAK_HI=['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्व फाल्गुनी','उत्तर फाल्गुनी','हस्त','चित्रा','स्वाती','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्वाषाढ़ा','उत्तराषाढ़ा','श्रवण','धनिष्ठा','शतभिषा','पूर्व भाद्रपद','उत्तर भाद्रपद','रेवती'];
+const NAK_EN=['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishta','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+const LORD_HI=['केतु','शुक्र','सूर्य','चंद्र','मंगल','राहु','गुरु','शनि','बुध'];
+const LORD_EN=['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury'];
+const DURATION=[7,20,6,10,7,18,16,19,17];
+const P_EN=['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Rahu','Ketu'];
+const P_HI=['सूर्य','चंद्र','बुध','शुक्र','मंगल','गुरु','शनि','राहु','केतु'];
+const mod=(x,n=360)=>((x%n)+n)%n, rad=x=>x*Math.PI/180, deg=x=>x*180/Math.PI;
+const jd=d=>d.getTime()/86400000+2440587.5;
+const ayan=j=>23.85675+0.013968*((j-2451545.0)/365.2425);
+function solveE(M,e){let E=rad(M)+e*Math.sin(rad(M))*(1+e*Math.cos(rad(M)));for(let i=0;i<6;i++)E=E-(E-e*Math.sin(E)-rad(M))/(1-e*Math.cos(E));return E}
+function sunData(d){
+ let w=282.9404+4.70935E-5*d,e=.016709-1.151E-9*d,M=mod(356.0470+.9856002585*d),E=solveE(M,e);
+ let x=Math.cos(E)-e,y=Math.sin(E)*Math.sqrt(1-e*e),r=Math.sqrt(x*x+y*y),v=deg(Math.atan2(y,x)),lon=mod(v+w);
+ return {lon,r,x:r*Math.cos(rad(lon)),y:r*Math.sin(rad(lon))};
+}
+const ELEMENTS={
+ Mercury:d=>[48.3313+3.24587E-5*d,7.0047+5E-8*d,29.1241+1.01444E-5*d,.387098,.205635+5.59E-10*d,168.6562+4.0923344368*d],
+ Venus:d=>[76.6799+2.46590E-5*d,3.3946+2.75E-8*d,54.8910+1.38374E-5*d,.723330,.006773-1.302E-9*d,48.0052+1.6021302244*d],
+ Mars:d=>[49.5574+2.11081E-5*d,1.8497-1.78E-8*d,286.5016+2.92961E-5*d,1.523688,.093405+2.516E-9*d,18.6021+.5240207766*d],
+ Jupiter:d=>[100.4542+2.76854E-5*d,1.3030-1.557E-7*d,273.8777+1.64505E-5*d,5.20256,.048498+4.469E-9*d,19.8950+.0830853001*d],
+ Saturn:d=>[113.6634+2.38980E-5*d,2.4886-1.081E-7*d,339.3939+2.97661E-5*d,9.55475,.055546-9.499E-9*d,316.9670+.0334442282*d]
+};
+function planetHelio(name,d){
+ let [N,i,w,a,e,M]=ELEMENTS[name](d);N=rad(N);i=rad(i);w=rad(w);M=mod(M);
+ let E=solveE(M,e),xv=a*(Math.cos(E)-e),yv=a*Math.sqrt(1-e*e)*Math.sin(E),v=Math.atan2(yv,xv),r=Math.sqrt(xv*xv+yv*yv);
+ let xh=r*(Math.cos(N)*Math.cos(v+w)-Math.sin(N)*Math.sin(v+w)*Math.cos(i));
+ let yh=r*(Math.sin(N)*Math.cos(v+w)+Math.cos(N)*Math.sin(v+w)*Math.cos(i));
+ let zh=r*(Math.sin(v+w)*Math.sin(i));
+ return {x:xh,y:yh,z:zh,lon:mod(deg(Math.atan2(yh,xh)))};
+}
+function moonTropical(j){
+ let n=j-2451545;
+ let L=mod(218.316+13.176396*n),M=mod(134.963+13.064993*n),D=mod(297.850+12.190749*n),F=mod(93.272+13.229350*n),Ms=mod(357.529+.9856003*n);
+ return mod(L+6.289*Math.sin(rad(M))+1.274*Math.sin(rad(2*D-M))+.658*Math.sin(rad(2*D))+.214*Math.sin(rad(2*M))-.186*Math.sin(rad(Ms))-.114*Math.sin(rad(2*F)));
+}
+function positions(date){
+ let j=jd(date),d=j-2451543.5,s=sunData(d),out={};
+ out.Sun=mod(s.lon-ayan(j));out.Moon=mod(moonTropical(j)-ayan(j));
+ for(const p of ['Mercury','Venus','Mars','Jupiter','Saturn']){
+   let h=planetHelio(p,d),x=h.x+s.x,y=h.y+s.y;
+   out[p]=mod(deg(Math.atan2(y,x))-ayan(j));
+ }
+ let rahu=mod(125.1228-.0529538083*d-ayan(j));out.Rahu=rahu;out.Ketu=mod(rahu+180);
+ return out;
+}
+function gmst(j){let T=(j-2451545)/36525;return mod(280.46061837+360.98564736629*(j-2451545)+.000387933*T*T-T*T*T/38710000)}
+function asc(date,lat,lon){
+ let j=jd(date),theta=rad(mod(gmst(j)+lon)),eps=rad(23.439291),phi=rad(lat);
+ let lam=deg(Math.atan2(-Math.cos(theta),Math.sin(theta)*Math.cos(eps)+Math.tan(phi)*Math.sin(eps)));
+ return mod(lam+180-ayan(j));
+}
+function nak(lon){let u=mod(lon)/(360/27),i=Math.floor(u),frac=u-i;return {i,frac,pada:Math.floor(frac*4)+1,lordIndex:i%9}}
+function signIndex(lon){return Math.floor(mod(lon)/30)}
+function navamsa(lon){
+ let s=signIndex(lon),part=Math.floor((mod(lon)%30)/(30/9)),start;
+ if([0,3,6,9].includes(s))start=s;
+ else if([1,4,7,10].includes(s))start=mod(s+8,12);
+ else start=mod(s+4,12);
+ return mod(start+part,12);
+}
+function toDate(y,m,d,h,min,ap,tz){
+ let hh=+h;if(ap==='PM'&&hh<12)hh+=12;if(ap==='AM'&&hh===12)hh=0;
+ let local=new Date(+y,+m-1,+d,hh,+min,0);
+ let offset=local.getTimezoneOffset();
+ if(tz==='Asia/Kolkata')offset=-330;
+ return new Date(Date.UTC(+y,+m-1,+d,hh,+min)-(-offset)*60000);
+}
+function chart(date,lat,lon){
+ let pos=positions(date),a=asc(date,+lat,+lon),mn=nak(pos.Moon);
+ return {date,pos,asc:a,ascSign:signIndex(a),moonSign:signIndex(pos.Moon),sunSign:signIndex(pos.Sun),moonNak:mn,nav:Object.fromEntries(Object.entries(pos).map(([p,l])=>[p,navamsa(l)])),ascNav:navamsa(a)};
+}
+function vimshottari(c,birth,at=new Date()){
+ let n=c.moonNak,startLord=n.lordIndex,elapsed=n.frac*DURATION[startLord],start=new Date(birth.getTime()-elapsed*365.2425*86400000),rows=[],cur=start;
+ for(let k=0;k<18;k++){let idx=(startLord+k)%9,end=new Date(cur.getTime()+DURATION[idx]*365.2425*86400000);rows.push({idx,start:new Date(cur),end});cur=end}
+ let md=rows.find(x=>at>=x.start&&at<x.end)||rows[0];
+ if(!md)return {md:null,ad:null};
+ let mdYears=DURATION[md.idx],mdMs=mdYears*365.2425*86400000,adStart=md.start,ad=null;
+ for(let k=0;k<9;k++){
+  let ai=(md.idx+k)%9,dur=mdMs*(DURATION[ai]/120),end=new Date(adStart.getTime()+dur);
+  if(at>=adStart&&at<end){ad={idx:ai,start:new Date(adStart),end};break}
+  adStart=end;
+ }
+ return {md,ad};
+}
+function tithi(date){let p=positions(date),diff=mod(p.Moon-p.Sun),n=Math.floor(diff/12)+1;return {n,index:(n-1)%15,paksha:n<=15?0:1}}
+function yoga(date){let p=positions(date);return Math.floor(mod(p.Sun+p.Moon)/(360/27))}
+function karana(date){let p=positions(date);return Math.floor(mod(p.Moon-p.Sun)/6)}
+function houseFrom(lon,ascSign){return mod(signIndex(lon)-ascSign,12)+1}
+function yogas(c){
+ let h={};for(const [p,l] of Object.entries(c.pos))h[p]=houseFrom(l,c.ascSign);
+ const ys=[];
+ if(signIndex(c.pos.Sun)===signIndex(c.pos.Mercury))ys.push(['Budha-Aditya','बुध-आदित्य']);
+ if([1,4,7,10].includes(mod(signIndex(c.pos.Jupiter)-c.moonSign,12)+1))ys.push(['Gaja Kesari','गज केसरी']);
+ if(signIndex(c.pos.Moon)===signIndex(c.pos.Mars))ys.push(['Chandra-Mangal','चंद्र-मंगल']);
+ const manglik=[1,2,4,7,8,12].includes(h.Mars);
+ return {ys,manglik,houses:h};
+}
+function sadeSati(moonSign,date=new Date()){
+ let sat=signIndex(positions(date).Saturn),rel=mod(sat-moonSign,12);
+ let code=rel===11?'phase1':rel===0?'phase2':rel===1?'phase3':(rel===3||rel===7?'dhaiya':'none');
+ return {sat,rel,code};
+}
+return {Z_HI,Z_EN,NAK_HI,NAK_EN,LORD_HI,LORD_EN,DURATION,P_EN,P_HI,mod,jd,ayan,positions,asc,nak,signIndex,navamsa,toDate,chart,vimshottari,tithi,yoga,karana,houseFrom,yogas,sadeSati};
+})();
+</script>
+
+<script>
+function setupLocation(prefix){
+ const input=document.getElementById(prefix+'Place'),box=document.getElementById(prefix+'Suggest');
+ if(!input||!box)return;let timer;
+ input.addEventListener('input',()=>{clearTimeout(timer);const q=input.value.trim();if(q.length<3){box.innerHTML='';return}
+  timer=setTimeout(async()=>{try{
+   const res=await fetch('https://photon.komoot.io/api/?limit=6&q='+encodeURIComponent(q));const data=await res.json();
+   box.innerHTML=(data.features||[]).map((f,i)=>{
+    const p=f.properties||{},name=[p.name,p.city,p.state,p.country].filter(Boolean).filter((x,j,a)=>a.indexOf(x)===j).join(', ');
+    return `<button type="button" data-i="${i}">${name}</button>`}).join('');
+   [...box.querySelectorAll('button')].forEach((b,i)=>b.onclick=async()=>{
+    const f=data.features[i],p=f.properties||{},name=[p.name,p.city,p.state,p.country].filter(Boolean).filter((x,j,a)=>a.indexOf(x)===j).join(', ');
+    input.value=name;document.getElementById(prefix+'Lat').value=f.geometry.coordinates[1].toFixed(6);document.getElementById(prefix+'Lon').value=f.geometry.coordinates[0].toFixed(6);box.innerHTML='';
+    const tz=document.getElementById(prefix+'Tz');
+    try{const tr=await fetch(`https://timeapi.io/api/timezone/coordinate?latitude=${f.geometry.coordinates[1]}&longitude=${f.geometry.coordinates[0]}`);if(tr.ok){const td=await tr.json();tz.value=td.timeZone||td.timezone||Intl.DateTimeFormat().resolvedOptions().timeZone}}
+    catch(e){tz.value=Intl.DateTimeFormat().resolvedOptions().timeZone}
+   });
+  }catch(e){box.innerHTML='<div class="notice">'+RVT('स्थान खोज उपलब्ध नहीं है। Latitude/Longitude नीचे भर सकते हैं।','Place search is unavailable. You can enter latitude/longitude below.')+'</div>'}},350)
+ })
+}
+function validBirth(prefix){
+ const d=+document.getElementById(prefix+'D').value,m=+document.getElementById(prefix+'M').value,y=+document.getElementById(prefix+'Y').value;
+ if(!/^\d{4}$/.test(String(document.getElementById(prefix+'Y').value))||y<1900||y>new Date().getFullYear()||m<1||m>12||d<1||d>31)return null;
+ const test=new Date(y,m-1,d);if(test.getFullYear()!=y||test.getMonth()!=m-1||test.getDate()!=d)return null;
+ return {d,m,y};
+}
+</script>
+<script>
+const MU_GOOD={
+ marriage:[3,4,9,11,12,14,16,18,20,21,26],vehicle:[0,3,4,6,7,12,13,14,16,21,22,26],
+ griha:[3,4,11,13,16,20,21,22,25,26],naming:[0,3,4,6,7,12,13,14,16,21,26]
+};
+function muDates(){
+ if(!muMonth.value){alert(RVT('महीना चुनें।','Choose a month.'));return}const b=validBirth('mb'),blat=+mbLat.value,blon=+mbLon.value;if(!b||!Number.isFinite(blat)||!Number.isFinite(blon)||(!blat&&!blon)){alert(RVT('सही जन्म तिथि और जन्म स्थान भरें।','Enter a valid birth date and birth place.'));return}const [bh,bmin]=mbTime.value.split(':').map(Number),birth=RVAstro.toDate(b.y,b.m,b.d,bh>12?bh-12:(bh||12),bmin,bh>=12?'PM':'AM',mbTz.value),natal=RVAstro.chart(birth,blat,blon);
+ const [y,m]=muMonth.value.split('-').map(Number),days=new Date(y,m,0).getDate(),type=muType.value,L=RVLang(),N=L==='hi'?RVAstro.NAK_HI:RVAstro.NAK_EN,Z=L==='hi'?RVAstro.Z_HI:RVAstro.Z_EN,out=[],lat=+muLat.value,lon=+muLon.value;if(!Number.isFinite(lat)||!Number.isFinite(lon)){alert(RVT('सही कार्य स्थान चुनें।','Choose a valid event location.'));return}
+ for(let d=1;d<=days;d++){let dt=new Date(Date.UTC(y,m-1,d,6,30)),c=RVAstro.chart(dt,lat,lon),t=RVAstro.tithi(dt),wd=dt.getUTCDay(),tara=RVAstro.mod(c.moonNak.i-natal.moonNak.i,27)%9+1,chandra=RVAstro.mod(c.moonSign-natal.moonSign,12)+1,score=50;if(MU_GOOD[type].includes(c.moonNak.i))score+=25;else continue;if([2,4,6,8,9].includes(tara))score+=15;else score-=12;if([1,3,6,7,10,11].includes(chandra))score+=15;else score-=8;if(![0,6].includes(wd))score+=8;if(![3,8,13,14].includes(t.index))score+=7;out.push({dt,c,t,tara,chandra,score});}out.sort((a,b)=>b.score-a.score||a.dt-b.dt);
+ const name=(mbName.value||RVT('आप','You')).trim();muResult.classList.remove('hidden');muResult.innerHTML=`<div class="match-hero"><h2>${name} — ${RVT('व्यक्तिगत मुहूर्त shortlist','Personal Muhurat Shortlist')}</h2><p>${RVT('जन्म राशि','Birth Moon sign')}: <strong>${Z[natal.moonSign]}</strong> · ${RVT('जन्म नक्षत्र','Birth Nakshatra')}: <strong>${N[natal.moonNak.i]} ${RVT('पद','Pada')} ${natal.moonNak.pada}</strong></p><p>${RVT('नीचे की ranking जन्म नक्षत्र, ताराबल, चंद्रबल, तिथि, वार और कार्य-विशेष नक्षत्र को साथ देखकर बनी है।','The ranking combines birth Nakshatra, Tarabala, Chandrabala, Tithi, weekday and purpose-specific Nakshatras.')}</p></div>`+(out.length?out.slice(0,12).map((x,i)=>`<div class="good-date"><strong>#${i+1} · ${x.dt.toLocaleDateString(L==='hi'?'hi-IN':'en-IN',{timeZone:'UTC',day:'numeric',month:'long',year:'numeric'})}</strong><div><span class="gold">${N[x.c.moonNak.i]}</span> · ${Z[x.c.moonSign]}<br>${RVT('व्यक्तिगत स्कोर','Personal score')}: ${x.score}/120 · ${RVT('ताराबल स्थान','Tara position')}: ${x.tara} · ${RVT('चंद्रबल भाव','Chandrabala house')}: ${x.chandra}</div></div>`).join(''):`<p>${RVT('इस महीने पर्याप्त personal-support वाली तारीख नहीं मिली। अगला महीना देखें।','No sufficiently supportive personal date was found this month. Try the next month.')}</p>`)+`<p class="notice">${RVT('यह personalized date shortlist है, exact clock-time Muhurat नहीं। अंतिम समय निकालने में स्थानीय सूर्योदय, लग्न और निषिद्ध काल भी देखे जाते हैं।','This is a personalised date shortlist, not an exact clock-time Muhurat. Final timing also requires local sunrise, Lagna and restricted periods.')}</p>`;
+}
+document.addEventListener('DOMContentLoaded',()=>{setupLocation('mb');setupLocation('mu');['mbD','mbM','mbY'].forEach(id=>document.getElementById(id).addEventListener('input',e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,+e.target.maxLength);const b=validBirth('mb');mbDatePreview.textContent=b?new Intl.DateTimeFormat(RVLang()==='hi'?'hi-IN':'en-IN',{day:'2-digit',month:'long',year:'numeric'}).format(new Date(b.y,b.m-1,b.d)):'DD / MM / YYYY'}));let n=new Date();muMonth.value=n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0');muBtn.onclick=muDates});document.addEventListener('rv-language',()=>{document.querySelectorAll('#muType option').forEach(o=>o.textContent=o.getAttribute('data-'+RVLang()));if(!muResult.classList.contains('hidden'))muDates()});
+</script>
+
+<script src="assets/language.js"></script>
+<script src="assets/popup.js"></script></body></html>

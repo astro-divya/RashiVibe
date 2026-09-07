@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kundli | RashiVibe</title>
+<meta name="description" content="Free Vedic Kundli with ascendant, sidereal planetary positions, Nakshatra, timing cycles and detailed life guidance.">
+<meta name="theme-color" content="#fff6e8">
+<link rel="icon" href="assets/rashivibe-icon.png">
+<link rel="stylesheet" href="assets/rashivibe.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script src="assets/account.js" defer></script>
+</head>
+<body>
+<div class="topbar"><div class="container"><span class="brandline" data-hi="ॐ • RashiVibe • Your Stars. Your Story." data-en="ॐ • RashiVibe • Your Stars. Your Story.">ॐ • RashiVibe • Your Stars. Your Story.</span><span id="liveClock"></span></div></div>
+<header><div class="container nav">
+<a class="brand" href="index.html" aria-label="RashiVibe home"><img src="assets/rashivibe-logo.png" alt="RashiVibe"></a>
+<nav class="navlinks" id="navlinks"><a href="index.html" class="" data-hi="होम" data-en="Home">होम</a><a href="free-kundli.html" class="active" data-hi="कुंडली" data-en="Kundli">कुंडली</a><a href="kundli-matching.html" class="" data-hi="कुंडली मिलान" data-en="Kundli Matching">कुंडली मिलान</a><a href="rashifal/index.html" class="" data-hi="राशिफल" data-en="Rashifal">राशिफल</a><a href="numerology.html" class="" data-hi="अंक ज्योतिष" data-en="Numerology">अंक ज्योतिष</a><a href="panchang.html" class="" data-hi="पंचांग" data-en="Panchang">पंचांग</a><a href="sade-sati.html" class="" data-hi="साढ़े साती" data-en="Sade Sati">साढ़े साती</a><a href="muhurat.html" class="" data-hi="मुहूर्त" data-en="Muhurat">मुहूर्त</a><a href="ratna-salah.html" class="" data-hi="रत्न सलाह" data-en="Gemstone Advice">रत्न सलाह</a></nav>
+<a id="rvProfilePill" class="rv-profile-pill" href="login.html" data-title-hi="लॉगिन / प्रोफाइल" data-title-en="Login / Profile"><span class="rv-profile-dot">●</span><span data-hi="लॉगिन" data-en="Login">लॉगिन</span></a><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">ENG</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
+</div></header>
+
+<main><section class="section"><div class="container">
+<div class="section-title"><span class="badge" data-hi="गहन वैदिक गणना • आसान भाषा" data-en="Deep Vedic Calculation • Simple Language">गहन वैदिक गणना • आसान भाषा</span><h1 data-hi="अपनी जन्म कुंडली बनाएं" data-en="Create Your Birth Kundli">अपनी जन्म कुंडली बनाएं</h1><p data-hi="जन्म तिथि, समय और स्थान से वैदिक sidereal chart तैयार करें।" data-en="Create a Vedic sidereal chart using birth date, time and place.">जन्म तिथि, समय और स्थान से वैदिक sidereal chart तैयार करें।</p></div>
+
+<div class="form-card">
+<h2 data-hi="आपका जन्म विवरण" data-en="Your Birth Details">आपका जन्म विवरण</h2>
+<div class="form-grid">
+<div class="field"><label data-hi="नाम" data-en="Name">नाम</label><input id="kName" data-hi="अपना नाम" data-en="Your name" placeholder="अपना नाम"></div>
+<div class="field"><label data-hi="जन्म स्थान" data-en="Birth place">जन्म स्थान</label><input id="kPlace" data-hi="शहर लिखें…" data-en="Type city…" placeholder="शहर लिखें…"><div id="kSuggest" class="suggestions"></div></div>
+<div class="field"><label data-hi="जन्म तिथि (DD / MM / YYYY)" data-en="Birth date (DD / MM / YYYY)">जन्म तिथि (DD / MM / YYYY)</label><div class="date-row"><input id="kD" type="text" inputmode="numeric" maxlength="2" pattern="[0-9]*" placeholder="DD"><input id="kM" type="text" inputmode="numeric" maxlength="2" pattern="[0-9]*" placeholder="MM"><input id="kY" type="text" inputmode="numeric" maxlength="4" pattern="[0-9]*" placeholder="YYYY"></div><small id="kDatePreview" class="date-confirm">पहले दिन, फिर महीना, फिर वर्ष भरें</small></div>
+<div class="field"><label data-hi="जन्म समय" data-en="Birth time">जन्म समय</label><div class="time-row"><select id="kH"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select><select id="kMin"><option value="0">00</option><option value="1">01</option><option value="2">02</option><option value="3">03</option><option value="4">04</option><option value="5">05</option><option value="6">06</option><option value="7">07</option><option value="8">08</option><option value="9">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option></select><select id="kAP"><option>AM</option><option>PM</option></select></div></div>
+</div>
+<details class="advanced"><summary data-hi="Advanced: Latitude / Longitude / Timezone" data-en="Advanced: Latitude / Longitude / Timezone">Advanced: Latitude / Longitude / Timezone</summary>
+<div class="form-grid three" style="margin-top:12px"><div class="field"><label>Latitude</label><input id="kLat" type="number" step="any"></div><div class="field"><label>Longitude</label><input id="kLon" type="number" step="any"></div><div class="field"><label>Timezone</label><input id="kTz" value="Asia/Kolkata"></div></div></details>
+</div>
+<div class="profile-savebar"><strong data-hi="अपनी प्रोफाइल सेव करें" data-en="Save your profile">अपनी प्रोफाइल सेव करें</strong><small data-hi="जन्म विवरण इस डिवाइस पर सेव होंगे और अगली बार अपने आप भर जाएंगे।" data-en="Birth details are saved on this device and auto-filled next time.">जन्म विवरण इस डिवाइस पर सेव होंगे और अगली बार अपने आप भर जाएंगे।</small><button type="button" class="btn ghost" id="saveKundliProfile" data-hi="प्रोफाइल सेव करें" data-en="Save profile">प्रोफाइल सेव करें</button></div>
+<div class="cta"><button class="btn primary" id="kundliBtn" data-hi="✨ कुंडली बनाएं" data-en="✨ Create Kundli">✨ कुंडली बनाएं</button></div>
+<div id="kundliResult" class="result hidden"></div>
+</div></section></main>
+<footer><div class="container footer-grid">
+<div><img src="assets/rashivibe-logo.png" alt="RashiVibe" style="width:230px"><p data-hi="आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।" data-en="Traditional Vedic astrology with a modern experience.">आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।</p></div>
+<div><h3 data-hi="महत्वपूर्ण" data-en="Important">महत्वपूर्ण</h3><div class="footer-links"><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a><a href="privacy.html" data-hi="गोपनीयता" data-en="Privacy">गोपनीयता</a><a href="disclaimer.html" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a><a href="terms.html" data-hi="नियम" data-en="Terms">नियम</a><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></div></div>
+<div><h3>RashiVibe</h3><p>© 2026 RashiVibe</p></div>
+</div></footer>
+
+<script>
+(()=> {
+  const root=document.documentElement;
+  let lang=localStorage.getItem('rvLang')||'hi';
+  function applyLang(){
+    root.lang=lang;
+    document.querySelectorAll('[data-hi][data-en]').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(el.matches('input[placeholder]')) el.placeholder=val;
+      else if(val && val.includes('<')) el.innerHTML=val;
+      else el.textContent=val;
+    });
+    document.querySelectorAll('[data-title-hi][data-title-en]').forEach(el=>el.title=el.getAttribute('data-title-'+lang));
+    const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='hi'?'ENG':'हिंदी';
+    document.dispatchEvent(new CustomEvent('rv-language',{detail:{lang}}));
+  }
+  window.RVLang=()=>lang;
+  window.RVT=(hi,en)=>lang==='hi'?hi:en;
+  window.RVSetLang=()=>{lang=lang==='hi'?'en':'hi';localStorage.setItem('rvLang',lang);applyLang()};
+  document.addEventListener('DOMContentLoaded',()=>{
+    applyLang();
+    const lb=document.getElementById('langBtn');if(lb)lb.onclick=RVSetLang;
+    const mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');if(mb&&nl){mb.onclick=()=>{const open=nl.classList.toggle('open');mb.setAttribute('aria-expanded',String(open));};nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('open');mb.setAttribute('aria-expanded','false');}));}
+    const clock=document.getElementById('liveClock');
+    function tick(){
+      if(!clock)return;
+      const now=new Date(),loc=lang==='hi'?'hi-IN':'en-IN';
+      clock.textContent=new Intl.DateTimeFormat(loc,{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+    }
+    tick();setInterval(tick,1000);
+  });
+})();
+</script>
+
+<script>
+const RVAstro=(()=>{
+const Z_HI=['मेष','वृषभ','मिथुन','कर्क','सिंह','कन्या','तुला','वृश्चिक','धनु','मकर','कुंभ','मीन'];
+const Z_EN=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const NAK_HI=['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्व फाल्गुनी','उत्तर फाल्गुनी','हस्त','चित्रा','स्वाती','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्वाषाढ़ा','उत्तराषाढ़ा','श्रवण','धनिष्ठा','शतभिषा','पूर्व भाद्रपद','उत्तर भाद्रपद','रेवती'];
+const NAK_EN=['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishta','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+const LORD_HI=['केतु','शुक्र','सूर्य','चंद्र','मंगल','राहु','गुरु','शनि','बुध'];
+const LORD_EN=['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury'];
+const DURATION=[7,20,6,10,7,18,16,19,17];
+const P_EN=['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Rahu','Ketu'];
+const P_HI=['सूर्य','चंद्र','बुध','शुक्र','मंगल','गुरु','शनि','राहु','केतु'];
+const mod=(x,n=360)=>((x%n)+n)%n, rad=x=>x*Math.PI/180, deg=x=>x*180/Math.PI;
+const jd=d=>d.getTime()/86400000+2440587.5;
+const ayan=j=>23.85675+0.013968*((j-2451545.0)/365.2425);
+function solveE(M,e){let E=rad(M)+e*Math.sin(rad(M))*(1+e*Math.cos(rad(M)));for(let i=0;i<6;i++)E=E-(E-e*Math.sin(E)-rad(M))/(1-e*Math.cos(E));return E}
+function sunData(d){
+ let w=282.9404+4.70935E-5*d,e=.016709-1.151E-9*d,M=mod(356.0470+.9856002585*d),E=solveE(M,e);
+ let x=Math.cos(E)-e,y=Math.sin(E)*Math.sqrt(1-e*e),r=Math.sqrt(x*x+y*y),v=deg(Math.atan2(y,x)),lon=mod(v+w);
+ return {lon,r,x:r*Math.cos(rad(lon)),y:r*Math.sin(rad(lon))};
+}
+const ELEMENTS={
+ Mercury:d=>[48.3313+3.24587E-5*d,7.0047+5E-8*d,29.1241+1.01444E-5*d,.387098,.205635+5.59E-10*d,168.6562+4.0923344368*d],
+ Venus:d=>[76.6799+2.46590E-5*d,3.3946+2.75E-8*d,54.8910+1.38374E-5*d,.723330,.006773-1.302E-9*d,48.0052+1.6021302244*d],
+ Mars:d=>[49.5574+2.11081E-5*d,1.8497-1.78E-8*d,286.5016+2.92961E-5*d,1.523688,.093405+2.516E-9*d,18.6021+.5240207766*d],
+ Jupiter:d=>[100.4542+2.76854E-5*d,1.3030-1.557E-7*d,273.8777+1.64505E-5*d,5.20256,.048498+4.469E-9*d,19.8950+.0830853001*d],
+ Saturn:d=>[113.6634+2.38980E-5*d,2.4886-1.081E-7*d,339.3939+2.97661E-5*d,9.55475,.055546-9.499E-9*d,316.9670+.0334442282*d]
+};
+function planetHelio(name,d){
+ let [N,i,w,a,e,M]=ELEMENTS[name](d);N=rad(N);i=rad(i);w=rad(w);M=mod(M);
+ let E=solveE(M,e),xv=a*(Math.cos(E)-e),yv=a*Math.sqrt(1-e*e)*Math.sin(E),v=Math.atan2(yv,xv),r=Math.sqrt(xv*xv+yv*yv);
+ let xh=r*(Math.cos(N)*Math.cos(v+w)-Math.sin(N)*Math.sin(v+w)*Math.cos(i));
+ let yh=r*(Math.sin(N)*Math.cos(v+w)+Math.cos(N)*Math.sin(v+w)*Math.cos(i));
+ let zh=r*(Math.sin(v+w)*Math.sin(i));
+ return {x:xh,y:yh,z:zh,lon:mod(deg(Math.atan2(yh,xh)))};
+}
+function moonTropical(j){
+ let n=j-2451545;
+ let L=mod(218.316+13.176396*n),M=mod(134.963+13.064993*n),D=mod(297.850+12.190749*n),F=mod(93.272+13.229350*n),Ms=mod(357.529+.9856003*n);
+ return mod(L+6.289*Math.sin(rad(M))+1.274*Math.sin(rad(2*D-M))+.658*Math.sin(rad(2*D))+.214*Math.sin(rad(2*M))-.186*Math.sin(rad(Ms))-.114*Math.sin(rad(2*F)));
+}
+function positions(date){
+ let j=jd(date),d=j-2451543.5,s=sunData(d),out={};
+ out.Sun=mod(s.lon-ayan(j));out.Moon=mod(moonTropical(j)-ayan(j));
+ for(const p of ['Mercury','Venus','Mars','Jupiter','Saturn']){
+   let h=planetHelio(p,d),x=h.x+s.x,y=h.y+s.y;
+   out[p]=mod(deg(Math.atan2(y,x))-ayan(j));
+ }
+ let rahu=mod(125.1228-.0529538083*d-ayan(j));out.Rahu=rahu;out.Ketu=mod(rahu+180);
+ return out;
+}
+function gmst(j){let T=(j-2451545)/36525;return mod(280.46061837+360.98564736629*(j-2451545)+.000387933*T*T-T*T*T/38710000)}
+function asc(date,lat,lon){
+ let j=jd(date),theta=rad(mod(gmst(j)+lon)),eps=rad(23.439291),phi=rad(lat);
+ let lam=deg(Math.atan2(-Math.cos(theta),Math.sin(theta)*Math.cos(eps)+Math.tan(phi)*Math.sin(eps)));
+ return mod(lam+180-ayan(j));
+}
+function nak(lon){let u=mod(lon)/(360/27),i=Math.floor(u),frac=u-i;return {i,frac,pada:Math.floor(frac*4)+1,lordIndex:i%9}}
+function signIndex(lon){return Math.floor(mod(lon)/30)}
+function navamsa(lon){
+ let s=signIndex(lon),part=Math.floor((mod(lon)%30)/(30/9)),start;
+ if([0,3,6,9].includes(s))start=s;
+ else if([1,4,7,10].includes(s))start=mod(s+8,12);
+ else start=mod(s+4,12);
+ return mod(start+part,12);
+}
+function toDate(y,m,d,h,min,ap,tz){
+ let hh=+h;if(ap==='PM'&&hh<12)hh+=12;if(ap==='AM'&&hh===12)hh=0;
+ let local=new Date(+y,+m-1,+d,hh,+min,0);
+ let offset=local.getTimezoneOffset();
+ if(tz==='Asia/Kolkata')offset=-330;
+ else if(Number.isFinite(+tz))offset=-(+tz*60);
+ return new Date(Date.UTC(+y,+m-1,+d,hh,+min)-(-offset)*60000);
+}
+function chart(date,lat,lon){
+ let pos=positions(date),a=asc(date,+lat,+lon),mn=nak(pos.Moon);
+ return {date,pos,asc:a,ascSign:signIndex(a),moonSign:signIndex(pos.Moon),sunSign:signIndex(pos.Sun),moonNak:mn,nav:Object.fromEntries(Object.entries(pos).map(([p,l])=>[p,navamsa(l)])),ascNav:navamsa(a)};
+}
+function vimshottari(c,birth,at=new Date()){
+ let n=c.moonNak,startLord=n.lordIndex,elapsed=n.frac*DURATION[startLord],start=new Date(birth.getTime()-elapsed*365.2425*86400000),rows=[],cur=start;
+ for(let k=0;k<18;k++){let idx=(startLord+k)%9,end=new Date(cur.getTime()+DURATION[idx]*365.2425*86400000);rows.push({idx,start:new Date(cur),end});cur=end}
+ let md=rows.find(x=>at>=x.start&&at<x.end)||rows[0];
+ if(!md)return {md:null,ad:null};
+ let mdYears=DURATION[md.idx],mdMs=mdYears*365.2425*86400000,adStart=md.start,ad=null;
+ for(let k=0;k<9;k++){
+  let ai=(md.idx+k)%9,dur=mdMs*(DURATION[ai]/120),end=new Date(adStart.getTime()+dur);
+  if(at>=adStart&&at<end){ad={idx:ai,start:new Date(adStart),end};break}
+  adStart=end;
+ }
+ return {md,ad};
+}
+function tithi(date){let p=positions(date),diff=mod(p.Moon-p.Sun),n=Math.floor(diff/12)+1;return {n,index:(n-1)%15,paksha:n<=15?0:1}}
+function yoga(date){let p=positions(date);return Math.floor(mod(p.Sun+p.Moon)/(360/27))}
+function karana(date){let p=positions(date);return Math.floor(mod(p.Moon-p.Sun)/6)}
+function houseFrom(lon,ascSign){return mod(signIndex(lon)-ascSign,12)+1}
+function yogas(c){
+ let h={};for(const [p,l] of Object.entries(c.pos))h[p]=houseFrom(l,c.ascSign);
+ const ys=[];
+ if(signIndex(c.pos.Sun)===signIndex(c.pos.Mercury))ys.push(['Budha-Aditya','बुध-आदित्य']);
+ if([1,4,7,10].includes(mod(signIndex(c.pos.Jupiter)-c.moonSign,12)+1))ys.push(['Gaja Kesari','गज केसरी']);
+ if(signIndex(c.pos.Moon)===signIndex(c.pos.Mars))ys.push(['Chandra-Mangal','चंद्र-मंगल']);
+ const manglik=[1,2,4,7,8,12].includes(h.Mars);
+ return {ys,manglik,houses:h};
+}
+function sadeSati(moonSign,date=new Date()){
+ let sat=signIndex(positions(date).Saturn),rel=mod(sat-moonSign,12);
+ let code=rel===11?'phase1':rel===0?'phase2':rel===1?'phase3':(rel===3||rel===7?'dhaiya':'none');
+ return {sat,rel,code};
+}
+return {Z_HI,Z_EN,NAK_HI,NAK_EN,LORD_HI,LORD_EN,DURATION,P_EN,P_HI,mod,jd,ayan,positions,asc,nak,signIndex,navamsa,toDate,chart,vimshottari,tithi,yoga,karana,houseFrom,yogas,sadeSati};
+})();
+</script>
+
+<script>
+function setupLocation(prefix){
+ const input=document.getElementById(prefix+'Place'),box=document.getElementById(prefix+'Suggest');
+ if(!input||!box)return;let timer;
+ input.addEventListener('input',()=>{clearTimeout(timer);const q=input.value.trim();if(q.length<3){box.innerHTML='';return}
+  timer=setTimeout(async()=>{try{
+   const res=await fetch('https://photon.komoot.io/api/?limit=6&q='+encodeURIComponent(q));const data=await res.json();
+   box.innerHTML=(data.features||[]).map((f,i)=>{
+    const p=f.properties||{},name=[p.name,p.city,p.state,p.country].filter(Boolean).filter((x,j,a)=>a.indexOf(x)===j).join(', ');
+    return `<button type="button" data-i="${i}">${name}</button>`}).join('');
+   [...box.querySelectorAll('button')].forEach((b,i)=>b.onclick=async()=>{
+    const f=data.features[i],p=f.properties||{},name=[p.name,p.city,p.state,p.country].filter(Boolean).filter((x,j,a)=>a.indexOf(x)===j).join(', ');
+    input.value=name;document.getElementById(prefix+'Lat').value=f.geometry.coordinates[1].toFixed(6);document.getElementById(prefix+'Lon').value=f.geometry.coordinates[0].toFixed(6);box.innerHTML='';
+    const tz=document.getElementById(prefix+'Tz');
+    try{const tr=await fetch(`https://timeapi.io/api/timezone/coordinate?latitude=${f.geometry.coordinates[1]}&longitude=${f.geometry.coordinates[0]}`);if(tr.ok){const td=await tr.json();tz.value=td.timeZone||td.timezone||Intl.DateTimeFormat().resolvedOptions().timeZone}}
+    catch(e){tz.value=Intl.DateTimeFormat().resolvedOptions().timeZone}
+   });
+  }catch(e){box.innerHTML='<div class="notice">'+RVT('स्थान खोज उपलब्ध नहीं है। Latitude/Longitude नीचे भर सकते हैं।','Place search is unavailable. You can enter latitude/longitude below.')+'</div>'}},350)
+ })
+}
+function validBirth(prefix){
+ const d=+document.getElementById(prefix+'D').value,m=+document.getElementById(prefix+'M').value,y=+document.getElementById(prefix+'Y').value;
+ if(!/^\d{4}$/.test(String(document.getElementById(prefix+'Y').value))||y<1900||y>new Date().getFullYear()||m<1||m>12||d<1||d>31)return null;
+ const test=new Date(y,m-1,d);if(test.getFullYear()!=y||test.getMonth()!=m-1||test.getDate()!=d)return null;
+ return {d,m,y};
+}
+function setupDateInputs(prefix){
+ const ids=[prefix+'D',prefix+'M',prefix+'Y'],preview=document.getElementById(prefix+'DatePreview');
+ ids.forEach(id=>document.getElementById(id)?.addEventListener('input',e=>{e.target.value=e.target.value.replace(/\D/g,'').slice(0,+e.target.maxLength);const b=validBirth(prefix);preview.textContent=b?new Intl.DateTimeFormat(RVLang()==='hi'?'hi-IN':'en-IN',{day:'2-digit',month:'long',year:'numeric'}).format(new Date(b.y,b.m-1,b.d)):RVT('पहले दिन, फिर महीना, फिर वर्ष भरें','Enter day, then month, then year')}));
+}
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{setupLocation('k');setupDateInputs('k')});
+const RVSignProfile={
+ hi:[
+  {name:'मेष',element:'अग्नि',tone:'सीधे निर्णय, पहल और तेज़ प्रतिक्रिया',work:'नई शुरुआत, नेतृत्व और परिणाम',rel:'स्पष्टता और व्यक्तिगत स्वतंत्रता'},
+  {name:'वृषभ',element:'पृथ्वी',tone:'स्थिरता, धैर्य और व्यावहारिक सोच',work:'संसाधन, गुणवत्ता और निरंतरता',rel:'विश्वास, स्थिरता और भरोसा'},
+  {name:'मिथुन',element:'वायु',tone:'जिज्ञासा, संवाद और बदलते विचारों को जल्दी समझना',work:'जानकारी, नेटवर्क और बहु-कौशल',rel:'बातचीत और मानसिक जुड़ाव'},
+  {name:'कर्क',element:'जल',tone:'संवेदनशीलता, स्मृति और सुरक्षा की चाह',work:'देखभाल, प्रबंधन और लोगों की जरूरत समझना',rel:'भावनात्मक भरोसा और अपनापन'},
+  {name:'सिंह',element:'अग्नि',tone:'आत्मविश्वास, अभिव्यक्ति और सम्मान की चाह',work:'नेतृत्व, प्रस्तुति और जिम्मेदारी',rel:'गरिमा, वफादारी और खुलापन'},
+  {name:'कन्या',element:'पृथ्वी',tone:'विश्लेषण, व्यवस्था और छोटी बातों पर ध्यान',work:'प्रक्रिया, सुधार और सटीकता',rel:'व्यावहारिक सहयोग और विश्वसनीयता'},
+  {name:'तुला',element:'वायु',tone:'संतुलन, संबंध और कई पक्षों को साथ देखकर निर्णय',work:'समन्वय, बातचीत और साझेदारी',rel:'समानता, संवाद और सौहार्द'},
+  {name:'वृश्चिक',element:'जल',tone:'गहराई, दृढ़ता और चीजों की तह तक जाने की प्रवृत्ति',work:'अनुसंधान, संकट-प्रबंधन और गोपनीय जिम्मेदारी',rel:'गहरा विश्वास और भावनात्मक ईमानदारी'},
+  {name:'धनु',element:'अग्नि',tone:'विस्तार, सीखने और बड़े दृष्टिकोण की ओर झुकाव',work:'ज्ञान, यात्रा, मार्गदर्शन और विकास',rel:'ईमानदारी, स्पेस और साझा उद्देश्य'},
+  {name:'मकर',element:'पृथ्वी',tone:'अनुशासन, जिम्मेदारी और दीर्घकालिक सोच',work:'संरचना, प्रशासन और स्थायी उपलब्धि',rel:'प्रतिबद्धता, भरोसा और व्यावहारिक समर्थन'},
+  {name:'कुंभ',element:'वायु',tone:'स्वतंत्र सोच, नए विचार और समूह से जुड़ी दृष्टि',work:'तकनीक, सिस्टम, नेटवर्क और सुधार',rel:'दोस्ती, सम्मान और व्यक्तिगत स्पेस'},
+  {name:'मीन',element:'जल',tone:'कल्पनाशीलता, करुणा और सूक्ष्म भावनाओं को पकड़ना',work:'रचनात्मकता, सेवा और अर्थपूर्ण कार्य',rel:'समझ, सहानुभूति और भावनात्मक जुड़ाव'}
+ ],
+ en:[
+  {name:'Aries',element:'Fire',tone:'direct decisions, initiative and quick response',work:'new starts, leadership and visible results',rel:'clarity and personal independence'},
+  {name:'Taurus',element:'Earth',tone:'stability, patience and practical thinking',work:'resources, quality and consistency',rel:'trust, steadiness and reliability'},
+  {name:'Gemini',element:'Air',tone:'curiosity, communication and rapid learning',work:'information, networks and multiple skills',rel:'conversation and mental connection'},
+  {name:'Cancer',element:'Water',tone:'sensitivity, memory and a need for security',work:'care, management and understanding people',rel:'emotional trust and belonging'},
+  {name:'Leo',element:'Fire',tone:'confidence, expression and a desire for dignity',work:'leadership, presentation and responsibility',rel:'loyalty, warmth and openness'},
+  {name:'Virgo',element:'Earth',tone:'analysis, order and attention to detail',work:'process, improvement and precision',rel:'practical support and dependability'},
+  {name:'Libra',element:'Air',tone:'balance, relationships and multi-sided judgment',work:'coordination, negotiation and partnership',rel:'equality, dialogue and harmony'},
+  {name:'Scorpio',element:'Water',tone:'depth, persistence and a need to understand what lies beneath',work:'research, crisis handling and confidential responsibility',rel:'deep trust and emotional honesty'},
+  {name:'Sagittarius',element:'Fire',tone:'expansion, learning and a broad outlook',work:'knowledge, travel, guidance and growth',rel:'honesty, space and shared purpose'},
+  {name:'Capricorn',element:'Earth',tone:'discipline, responsibility and long-term thinking',work:'structure, administration and durable achievement',rel:'commitment, trust and practical support'},
+  {name:'Aquarius',element:'Air',tone:'independent thinking, innovation and group awareness',work:'technology, systems, networks and reform',rel:'friendship, respect and personal space'},
+  {name:'Pisces',element:'Water',tone:'imagination, compassion and subtle emotional perception',work:'creativity, service and meaningful work',rel:'understanding, empathy and emotional connection'}
+ ]
+};
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function chartHouses(c,useNav=false){
+ const ascS=useNav?c.ascNav:c.ascSign, pos=useNav?c.nav:c.pos, houses=Array.from({length:12},(_,i)=>({sign:(ascS+i)%12,planets:[]}));
+ Object.entries(pos).forEach(([p,v])=>{const si=useNav?v:RVAstro.signIndex(v),h=RVAstro.mod(si-ascS,12);houses[h].planets.push(p)});return houses;
+}
+function buildChartSVG(c,useNav,L){
+ const Z=L==='hi'?RVAstro.Z_HI:RVAstro.Z_EN, P=L==='hi'?Object.fromEntries(RVAstro.P_EN.map((x,i)=>[x,RVAstro.P_HI[i]])):Object.fromEntries(RVAstro.P_EN.map(x=>[x,x]));
+ const hs=chartHouses(c,useNav);const pos=[[200,55],[95,55],[42,120],[42,205],[95,270],[200,270],[305,270],[358,205],[358,120],[305,55],[200,130],[200,205]];
+ let labels=hs.map((h,i)=>{let ps=h.planets.map(x=>P[x]).join(' · ');return `<g><text x="${pos[i][0]}" y="${pos[i][1]}" class="c-house">${i+1}</text><text x="${pos[i][0]}" y="${pos[i][1]+16}" class="c-sign">${Z[h.sign]}</text><text x="${pos[i][0]}" y="${pos[i][1]+31}" class="c-planets">${ps}</text></g>`}).join('');
+ return `<svg class="kundli-svg" viewBox="0 0 400 325" role="img" aria-label="${useNav?'D9 Navamsha':'D1 Rashi'}"><rect x="5" y="5" width="390" height="315" rx="5" class="c-bg"/><path d="M200 5 L395 162.5 L200 320 L5 162.5 Z M5 5 L395 320 M395 5 L5 320 M5 5 L200 162.5 L395 5 M5 320 L200 162.5 L395 320" class="c-line"/>${labels}</svg>`;
+}
+function longReport(c,d,y,L,name){
+ const Z=L==='hi'?RVAstro.Z_HI:RVAstro.Z_EN,N=L==='hi'?RVAstro.NAK_HI:RVAstro.NAK_EN,LORD=L==='hi'?RVAstro.LORD_HI:RVAstro.LORD_EN;
+ const prof=RVSignProfile[L],a=prof[c.ascSign],m=prof[c.moonSign],s=prof[c.sunSign];const md=d.md?LORD[d.md.idx]:'—',ad=d.ad?LORD[d.ad.idx]:'—';
+ const h=y.houses, tenth=Object.entries(h).filter(([p,hh])=>hh===10).map(([p])=>p), seventh=Object.entries(h).filter(([p,hh])=>hh===7).map(([p])=>p), second=Object.entries(h).filter(([p,hh])=>hh===2).map(([p])=>p);
+ const pName=x=>{let i=RVAstro.P_EN.indexOf(x);return i>=0?(L==='hi'?RVAstro.P_HI[i]:x):x};
+ const list=a=>a.length?a.map(pName).join(', '):(L==='hi'?'कोई प्रमुख ग्रह नहीं':'no major planet');
+ if(L==='hi') return {
+ summary:`${name?esc(name)+' जी, ':''}इस कुंडली में ${Z[c.ascSign]} लग्न, ${Z[c.moonSign]} चंद्र राशि और ${N[c.moonNak.i]} नक्षत्र का प्रभाव मुख्य आधार बनता है। ${Z[c.ascSign]} लग्न आपके बाहरी व्यवहार, काम करने के तरीके और परिस्थितियों का सामना करने की शैली में ${a.tone} का रंग देता है। चंद्र राशि ${Z[c.moonSign]} मन, प्रतिक्रिया और भावनात्मक प्राथमिकताओं में ${m.tone} को मजबूत करती है, जबकि सूर्य ${Z[c.sunSign]} राशि आत्म-अभिव्यक्ति और आत्मसम्मान के तरीके में ${s.tone} जोड़ती है। इन तीनों को साथ देखने पर व्यक्तित्व एक ही शब्द में सीमित नहीं रहता; कभी आप बहुत व्यावहारिक और नियंत्रित दिख सकते हैं, तो कुछ स्थितियों में भावनात्मक या तेज़ प्रतिक्रिया भी सामने आ सकती है। जन्म नक्षत्र का पद ${c.moonNak.pada} है, इसलिए किसी भी फलादेश को केवल राशि से नहीं बल्कि नक्षत्र, भाव, दशा और अन्य गहन वैदिक संकेतों के साथ पढ़ना अधिक उपयोगी रहता है। नीचे की रिपोर्ट इसी संयुक्त ढांचे पर आधारित है और प्रत्येक विषय को अलग-अलग समझाती है।`,
+ personality:`आपके व्यक्तित्व का पहला आधार ${Z[c.ascSign]} लग्न है, जो ${a.element} तत्व से जुड़ा है। यह ${a.tone} की प्रवृत्ति को सामने लाता है। चंद्रमा ${Z[c.moonSign]} में होने से भीतर की सोच और भावनात्मक प्रतिक्रिया में ${m.tone} का प्रभाव जुड़ता है। इसलिए बाहरी व्यवहार और अंदर की जरूरतें हमेशा बिल्कुल एक जैसी नहीं होंगी। सूर्य ${Z[c.sunSign]} में होने से आत्मसम्मान, पहचान और अपने निर्णयों पर टिके रहने का तरीका ${s.tone} से प्रभावित होता है। ${N[c.moonNak.i]} नक्षत्र व्यक्ति को अनुभवों को अपने तरीके से समझने, चुनिंदा लोगों पर भरोसा करने और किसी विषय को केवल सतह पर न छोड़ने की प्रवृत्ति दे सकता है। आपकी ताकत तब सबसे अच्छी तरह सामने आती है जब आपको दिशा स्पष्ट हो, अपनी गति में काम करने की जगह मिले और निर्णय लेने से पहले पर्याप्त जानकारी मिल जाए। चुनौती यह हो सकती है कि किसी एक विचार, चिंता या अपेक्षा को मन में जरूरत से ज्यादा समय तक रखा जाए। संतुलन के लिए नियमित दिनचर्या, स्पष्ट संवाद और बड़े निर्णयों को छोटे चरणों में बांटना अधिक उपयोगी रहेगा।`,
+ career:`करियर को देखते समय केवल दसवें भाव को नहीं, लग्न, दशम भाव, उसके स्वामी, सूर्य, शनि, बुध, गुरु और वर्तमान दशा को साथ देखा जाता है। आपकी लग्न प्रकृति ${a.work} वाले कामों में सहजता दिखाती है, जबकि चंद्र राशि ${m.work} से जुड़े वातावरण में मानसिक संतुष्टि का संकेत देती है। वर्तमान चार्ट में दसवें भाव में ${list(tenth)} स्थित है; यह उस भाव की प्रकृति को सीधे प्रभावित करता है, लेकिन अंतिम निष्कर्ष ग्रह की राशि, दृष्टि और दशा पर निर्भर करता है। ${Z[c.sunSign]} सूर्य आपको काम में अपनी पहचान बनाने और योगदान को महसूस करने की जरूरत दे सकता है। यदि नौकरी में लगातार केवल निर्देश मानने हों और सीखने या जिम्मेदारी बढ़ाने की जगह न हो, तो रुचि घट सकती है। इसके विपरीत, जहां लक्ष्य स्पष्ट हों, कौशल का उपयोग हो और धीरे-धीरे अधिकार या विशेषज्ञता बढ़े, वहां स्थिर प्रगति बेहतर रहेगी। वर्तमान ${md} महादशा और ${ad} अंतर्दशा के दौरान करियर के फैसलों में उसी ग्रह की भूमिका महत्वपूर्ण रहेगी; इसलिए समय का उपयोग कौशल बढ़ाने, नेटवर्क मजबूत करने और जल्दबाजी में दिशा बदलने के बजाय प्रमाणित अवसर चुनने में करें।`,
+ finance:`धन के विषय में दूसरा, ग्यारहवां और कभी-कभी पांचवां तथा आठवां भाव भी महत्वपूर्ण होते हैं। आपके दूसरे भाव में ${list(second)} का प्रभाव है, इसलिए आय से अधिक महत्वपूर्ण धन संभालने की आदत और निर्णय की शैली होगी। ${a.tone} वाली लग्न प्रकृति अपने तरीके से आर्थिक नियंत्रण रखना चाहती है, जबकि ${m.tone} वाला चंद्र मन कभी सुरक्षा को प्राथमिकता देगा और कभी अनुभव या सुविधा पर खर्च करने को उचित मानेगा। इसलिए बजट में एक स्थायी हिस्सा बचत के लिए और एक सीमित हिस्सा लचीले खर्च के लिए रखना आपके स्वभाव के अनुकूल रहेगा। वर्तमान दशा ${md}/${ad} के समय बड़े निवेश, कर्ज या लंबे वित्तीय दायित्व का निर्णय केवल ज्योतिषीय संकेत से नहीं लेना चाहिए; वास्तविक आय, जोखिम, दस्तावेज और समय-सीमा जरूर देखें। कुंडली का उपयोग यहां व्यवहार के पैटर्न समझने में ज्यादा उपयोगी है—जैसे जल्द निर्णय लेना, ज्यादा सावधानी, दूसरों की सलाह पर निर्भर होना या अवसर देखकर जोखिम बढ़ा देना। स्पष्ट लक्ष्य, नियमित समीक्षा और लिखित वित्तीय योजना आपके लिए किसी भी शुभ-अशुभ संकेत से ज्यादा व्यावहारिक सहारा बनेगी।`,
+ relationship:`संबंध और विवाह के लिए सप्तम भाव, उसके स्वामी, शुक्र, गुरु, चंद्रमा और अन्य संबंध-सूचकों को साथ देखना जरूरी है। आपके सप्तम भाव में ${list(seventh)} दिखाई देता है। इसे अकेले अच्छा या खराब नहीं कहा जा सकता; ग्रह की प्रकृति यह बताती है कि साझेदारी में किस तरह की ऊर्जा बार-बार सामने आएगी। लग्न के अनुसार आप संबंध में ${a.rel} को महत्व देते हैं, जबकि चंद्र राशि की जरूरत ${m.rel} से जुड़ी है। यदि दोनों जरूरतें अलग दिशा में हों, तो कभी स्वतंत्रता और कभी निकटता की मांग बढ़ सकती है। इसका सबसे अच्छा समाधान स्पष्ट संवाद और अपेक्षाओं को पहले से बताना है। विवाह का समय केवल एक आयु या एक दशा देखकर तय नहीं करना चाहिए; दशा-अंतर्दशा, संबंध-सूचक भाव और उस समय के गोचर का संयुक्त अध्ययन चाहिए। इसलिए इस रिपोर्ट में संबंधों को समर्थन और दबाव के संकेत के रूप में पढ़ें, निश्चित भविष्यवाणी के रूप में नहीं।`,
+ dasha:`विम्शोत्तरी दशा जीवन के समय-क्रम को समझने का पारंपरिक तरीका है। अभी ${md} महादशा और ${ad} अंतर्दशा चल रही है। महादशा व्यापक पृष्ठभूमि बताती है, जबकि अंतर्दशा उसी बड़े दौर के अंदर सक्रिय विषयों को अधिक निकट से दिखाती है। किसी ग्रह की दशा का अर्थ केवल उस ग्रह के सामान्य गुण नहीं होते; जन्म कुंडली में वह किस भाव का स्वामी है, किस राशि और भाव में बैठा है, किन ग्रहों से संबंध बना रहा है और गहन वैदिक गणना में उसकी स्थिति कैसी है—इन सबको साथ पढ़ना पड़ता है। इसलिए एक ही ${md} महादशा दो लोगों के लिए बिल्कुल अलग अनुभव दे सकती है। इस अवधि में सबसे उपयोगी तरीका यह है कि उस ग्रह से जुड़े जीवन क्षेत्रों पर ध्यान दिया जाए, लेकिन फैसले वास्तविक परिस्थितियों के आधार पर लिए जाएं। यदि काम, पढ़ाई, संबंध या वित्त में कोई बड़ा बदलाव सामने आए, तो उसे केवल “दशा का असर” मानकर स्वीकार न करें; विकल्प, समय, जोखिम और जिम्मेदारियों की जांच भी करें। यही तरीका ज्योतिष को व्यावहारिक मार्गदर्शन के रूप में उपयोगी बनाता है।`,
+ yoga:`इस chart scan में ${y.ys.length?y.ys.map(v=>v[1]).join(', '):'कोई प्रमुख सरल योग स्पष्ट रूप से नहीं'} मिला है। ऐसे योगों को केवल नाम देखकर बहुत बड़ा परिणाम नहीं देना चाहिए, क्योंकि उनकी शक्ति ग्रहों के अंश, राशि, भाव, दृष्टि, युति और दशा पर निर्भर करती है। मंगल ${h.Mars} भाव में है, इसलिए पारंपरिक मंगल संकेत को ${y.manglik?'ध्यान में रखा जाएगा':'प्रमुख लग्न-आधारित दोष के रूप में नहीं माना गया'}। मंगल दोष का निर्णय केवल एक भाव से करना अधूरा हो सकता है; चंद्र और शुक्र से स्थिति, राशि, सप्तम भाव तथा दोनों कुंडलियों के संतुलन को भी देखा जाता है। इसी तरह किसी भी राजयोग, धनयोग या गजकेसरी जैसे योग को वास्तविक जीवन में तभी मजबूत माना जाता है जब संबंधित ग्रह समर्थ हों और उनकी दशा सक्रिय हो। इस रिपोर्ट का उद्देश्य योगों को डर या गारंटी की भाषा में दिखाना नहीं, बल्कि यह बताना है कि किन विषयों पर अतिरिक्त ध्यान देना उपयोगी रहेगा। मजबूत संकेतों को अवसर की तरह और दबाव वाले संकेतों को तैयारी की जरूरत की तरह पढ़ना अधिक संतुलित तरीका है।`
+ };
+ return {
+ summary:`${name?esc(name)+', ':''}your chart is anchored by a ${Z[c.ascSign]} Ascendant, a ${Z[c.moonSign]} Moon and the ${N[c.moonNak.i]} Nakshatra. The Ascendant shapes your outward approach and gives a pattern of ${a.tone}. The Moon describes your internal responses and adds ${m.tone}, while the Sun in ${Z[c.sunSign]} influences identity through ${s.tone}. Taken together, these factors show why personality cannot be reduced to one sign or one keyword. You may appear controlled and practical in some settings yet respond more emotionally or quickly in others. Your Moon falls in pada ${c.moonNak.pada}, so a useful interpretation needs the Nakshatra, houses, timing cycles and deeper Vedic indicators in addition to the sign itself. The report below follows that combined framework. It is designed to explain what the calculated placements mean in everyday areas such as work, money, relationships and timing rather than leaving you with raw tables alone.`,
+ personality:`Your ${Z[c.ascSign]} Ascendant belongs to the ${a.element} element and brings ${a.tone}. With the Moon in ${Z[c.moonSign]}, the internal emotional pattern adds ${m.tone}. This can create a difference between how others initially see you and what you actually need to feel settled. The Sun in ${Z[c.sunSign]} influences confidence and identity through ${s.tone}. ${N[c.moonNak.i]} adds a more specific lunar layer, showing how you process experience, trust people and react to repeated situations. Your strengths are more visible when the goal is clear, you have enough room to work in your own rhythm, and decisions are based on complete information rather than pressure. A recurring challenge can be holding one concern, expectation or idea for too long after it has stopped being useful. Clear communication, a steady routine and breaking large decisions into smaller steps can help you use the stronger side of these placements without becoming rigid or overloaded.`,
+ career:`Career interpretation combines the tenth house, its ruler, the Ascendant, Sun, Saturn, Mercury, Jupiter and current Dasha rather than relying on one placement. Your Ascendant naturally supports work involving ${a.work}, while the Moon tends to feel more engaged in environments related to ${m.work}. The tenth house currently contains ${list(tenth)}, which directly modifies career themes but still needs its sign, aspects and timing to judge strength. The Sun in ${Z[c.sunSign]} can increase the need to feel that your work carries identity, responsibility or visible contribution. Roles that offer no learning, ownership or growth may become tiring even when they are secure. In contrast, clear goals and gradual increases in expertise or authority can suit you well. During the current ${md} Mahadasha and ${ad} Antardasha, decisions should be filtered through the role of those planets in the natal chart. Use this period to strengthen skills, verify opportunities and build useful networks instead of changing direction only because a short-term situation feels uncomfortable.`,
+ finance:`Financial interpretation uses the second and eleventh houses together with supporting houses and their rulers. Your second house contains ${list(second)}, so money management habits can matter as much as income itself. The Ascendant pattern of ${a.tone} may prefer a sense of control over resources, while the Moon pattern of ${m.tone} can sometimes prioritize security and at other times experience or convenience. A practical structure is to keep a fixed portion for savings and a clearly limited flexible portion for discretionary spending. During the current ${md}/${ad} period, major investment, debt or long-term financial commitments should never be based only on an astrological indication. Check actual income, risk, documentation, liquidity and timing. The chart is more useful for identifying behaviour patterns—such as rushing, becoming overly cautious, relying too much on other people’s judgment, or increasing risk when an opportunity looks exciting. Written goals, scheduled reviews and disciplined diversification are more dependable supports than treating any single placement as a promise of gain or loss.`,
+ relationship:`Relationships and marriage are read by combining partnership indicators, Venus, Jupiter, the Moon, timing cycles and deeper Vedic calculations. Your partnership area contains ${list(seventh)}. This is not automatically good or bad; it shows the kind of energy that repeatedly needs attention in partnership. The Ascendant suggests that you value ${a.rel}, while the Moon seeks ${m.rel}. When those needs differ, there can be periods in which independence feels important and other periods in which closeness becomes the priority. Clear expectations and direct conversation are the best way to balance the two. Marriage timing should not be reduced to one age range or one timing period. A responsible traditional reading combines several calculated indicators with relevant transits. Treat the result as guidance about stronger and more demanding phases rather than a guarantee about a particular relationship or date.`,
+ dasha:`Vimshottari Dasha is a traditional timing framework. You are currently in ${md} Mahadasha with ${ad} Antardasha. The Mahadasha forms the broad background, while the Antardasha describes a more immediate emphasis within that larger period. The result of a planet’s period depends on what it rules in your birth chart, where it sits, the relationships it forms with other planets and its condition in deeper Vedic calculations. This is why the same ${md} Mahadasha can feel very different for two people. A useful approach is to pay attention to the life areas connected with the active planets while still making decisions from real circumstances. If a major change appears in work, study, relationships or finances, do not accept it merely as a Dasha effect. Compare alternatives, timing, risk and responsibilities. Used this way, Dasha can provide a structured lens for reflection without replacing practical judgment or turning every event into a fixed prediction.`,
+ yoga:`This scan found ${y.ys.length?y.ys.map(v=>v[0]).join(', '):'no major simple yoga clearly'}. A Yoga should not be treated as a large promise merely because its name appears. Its practical strength depends on degree, sign, house, aspects, conjunctions and the periods of the involved planets. Mars is in house ${h.Mars}, so the traditional Manglik indicator is ${y.manglik?'kept in consideration':'not treated as a major Lagna-based indication here'}. Even Manglik assessment is incomplete if judged from one house alone; Moon, Venus, the seventh house and the balance between two charts can matter in a full traditional comparison. The same caution applies to Raj Yoga, Dhan Yoga or Gaja Kesari style combinations: they become more relevant when the participating planets are actually supported and their timing becomes active. The purpose of this section is to identify areas worth closer study, not to create fear or guarantee outcomes. Strong patterns are best read as opportunities and pressured patterns as areas that benefit from preparation and awareness.`
+ };
+}
+function nameRashiIndex(name){
+ const raw=(name||'').trim().toLowerCase();if(!raw)return null;
+ const n=raw.normalize('NFC');
+ const groups=[
+  ['chu','che','cho','la','li','lu','le','lo','a','चु','चे','चो','ला','ली','लू','ले','लो','अ'],
+  ['i','ee','u','oo','e','ai','o','va','vi','vu','ve','vo','ई','ऊ','ए','ऐ','ओ','वा','वी','वु','वे','वो'],
+  ['ka','ki','ku','gha','nga','chha','ke','ko','ha','का','की','कु','घ','ङ','छ','के','को','हा'],
+  ['hi','hu','he','ho','da','di','du','de','do','ही','हू','हे','हो','डा','डी','डू','डे','डो'],
+  ['ma','mi','mu','me','mo','ta','ti','tu','te','मा','मी','मू','मे','मो','टा','टी','टू','टे'],
+  ['to','pa','pi','pu','sha','na','tha','pe','po','टो','पा','पी','पु','ष','ण','ठ','पे','पो'],
+  ['ra','ri','ru','re','ro','taa','tii','tuu','tee','रा','री','रु','रे','रो','ता','ती','तू','ते'],
+  ['to','na','ni','nu','ne','no','ya','yi','yu','तो','ना','नी','नू','ने','नो','या','यी','यू'],
+  ['ye','yo','bha','bhi','bhu','dha','pha','dhaa','bhe','ये','यो','भा','भी','भू','धा','फा','ढा','भे'],
+  ['bho','ja','ji','khi','khu','khe','kho','ga','gi','भो','जा','जी','खी','खू','खे','खो','गा','गी'],
+  ['gu','ge','go','sa','si','su','se','so','da','गु','गे','गो','सा','सी','सू','से','सो','दा'],
+  ['di','du','tha','jha','nya','de','do','cha','chi','दी','दू','थ','झ','ञ','दे','दो','चा','ची']
+ ];
+ // longest-prefix first avoids short Latin prefixes stealing a match
+ for(let i=0;i<groups.length;i++)for(const x of [...groups[i]].sort((a,b)=>b.length-a.length))if(n.startsWith(x))return i;
+ return null;
+}
+function saveKundliLocal(){const o={name:kName.value,place:kPlace.value,d:kD.value,m:kM.value,y:kY.value,h:kH.value,min:kMin.value,ap:kAP.value,lat:kLat.value,lon:kLon.value,tz:kTz.value};localStorage.setItem('rvKundliProfile',JSON.stringify(o));if(window.RVAccount){const a=RVAccount.getActiveProfile();RVAccount.saveProfile({...a,...o,id:a?.id},true)}alert(RVT('प्रोफाइल सेव हो गई। अब यही विवरण दूसरे tools में भी उपयोग होंगे।','Profile saved. These details can now be reused across tools.'))}
+function loadKundliLocal(){try{const o=JSON.parse(localStorage.getItem('rvKundliProfile')||'null');if(!o)return;const map={name:kName,place:kPlace,d:kD,m:kM,y:kY,h:kH,min:kMin,ap:kAP,lat:kLat,lon:kLon,tz:kTz};for(const [k,el] of Object.entries(map))if(o[k]!==undefined&&el)el.value=o[k];kD.dispatchEvent(new Event('input'))}catch(e){}}
+async function downloadPDF(){
+ const report=document.getElementById('kundliReportBody'); if(!report)return;
+ const btn=document.getElementById('pdfBtn'); if(btn){btn.disabled=true;btn.textContent=RVT('PDF तैयार हो रही है…','Preparing PDF…')}
+ try{
+  if(!window.html2canvas||!window.jspdf){throw new Error('PDF library unavailable')}
+  const canvas=await html2canvas(report,{scale:1.6,useCORS:true,backgroundColor:'#ffffff',onclone:doc=>doc.body.classList.add('pdf-clone')});
+  const {jsPDF}=window.jspdf;const pdf=new jsPDF('p','mm','a4');const pageW=210,pageH=297,margin=8,imgW=pageW-margin*2,imgH=canvas.height*imgW/canvas.width;const img=canvas.toDataURL('image/jpeg',.93);let y=margin,remain=imgH;
+  pdf.addImage(img,'JPEG',margin,y,imgW,imgH);remain-=pageH-margin*2;
+  while(remain>0){pdf.addPage();y=margin-(imgH-remain);pdf.addImage(img,'JPEG',margin,y,imgW,imgH);remain-=pageH-margin*2}
+  const nm=(document.getElementById('kName').value.trim()||'RashiVibe_Kundli').replace(/[^a-z0-9_\-]+/gi,'_');pdf.save(nm+'_Report.pdf');
+ }catch(e){alert(RVT('PDF बनाने वाली library load नहीं हुई। Internet connection check करें; Print button अभी भी काम करेगा।','The PDF library could not load. Check your internet connection; the Print button will still work.'))}
+ finally{if(btn){btn.disabled=false;btn.textContent=RVT('📄 PDF डाउनलोड करें','📄 Download PDF')}}
+}
+function printReport(){window.print()}
+
+function planetShortK(p){const H={Sun:'Su',Moon:'Mo',Mars:'Ma',Mercury:'Me',Jupiter:'Ju',Venus:'Ve',Saturn:'Sa',Rahu:'Ra',Ketu:'Ke'};return H[p]||p.slice(0,2)}
+function northChartK(c,Z,name){
+ const pts=[[200,92],[112,74],[70,116],[92,200],[70,284],[112,326],[200,308],[288,326],[330,284],[308,200],[330,116],[288,74]],hs=Array.from({length:12},()=>[]);
+ Object.entries(c.pos).forEach(([p,l])=>hs[RVAstro.houseFrom(l,c.ascSign)-1].push(planetShortK(p)));
+ const signShort=Z.map(x=>String(x).slice(0,RVLang()==='hi'?4:3));let labels='';
+ for(let i=0;i<12;i++){const [x,y]=pts[i],sg=(c.ascSign+i)%12,pl=hs[i].join(' ')||'—';labels+=`<text x="${x}" y="${y-7}" text-anchor="middle" fill="#765a27" font-size="10.5" font-family="Arial,sans-serif">${i+1} · ${signShort[sg]}</text><text x="${x}" y="${y+9}" text-anchor="middle" fill="#241c13" font-size="10.5" font-weight="700" font-family="Arial,sans-serif">${pl}</text>`}
+ return `<svg class="north-chart" viewBox="0 0 400 400" role="img" aria-label="${esc(name)} ${RVT('जन्म कुंडली','birth chart')}" xmlns="http://www.w3.org/2000/svg"><rect x="18" y="18" width="364" height="364" rx="3" fill="#fffaf0" stroke="#8d6b2f" stroke-width="2"/><polygon points="200,18 382,200 200,382 18,200" fill="none" stroke="#8d6b2f" stroke-width="1.8"/><path d="M18 18L200 200L382 18 M382 382L200 200L18 382" fill="none" stroke="#8d6b2f" stroke-width="1.8"/><circle cx="200" cy="200" r="3" fill="#8d6b2f"/><text x="200" y="48" text-anchor="middle" fill="#7a4f12" font-size="11" font-weight="800" font-family="Arial,sans-serif">${RVT('लग्न','Asc')} · ${signShort[c.ascSign]}</text>${labels}</svg>`;
+}
+const GANA_HI=['देव','मनुष्य','राक्षस','मनुष्य','देव','मनुष्य','देव','देव','राक्षस','राक्षस','मनुष्य','मनुष्य','देव','राक्षस','देव','राक्षस','देव','राक्षस','राक्षस','मनुष्य','मनुष्य','देव','राक्षस','राक्षस','मनुष्य','मनुष्य','देव'];
+const GANA_EN=['Deva','Manushya','Rakshasa','Manushya','Deva','Manushya','Deva','Deva','Rakshasa','Rakshasa','Manushya','Manushya','Deva','Rakshasa','Deva','Rakshasa','Deva','Rakshasa','Rakshasa','Manushya','Manushya','Deva','Rakshasa','Rakshasa','Manushya','Manushya','Deva'];
+const NADI_HI=['आदि','मध्य','अंत्य','आदि','मध्य','आदि','आदि','मध्य','अंत्य','अंत्य','मध्य','आदि','आदि','मध्य','अंत्य','अंत्य','मध्य','आदि','आदि','मध्य','अंत्य','अंत्य','मध्य','आदि','आदि','मध्य','अंत्य'];
+const NADI_EN=['Adi','Madhya','Antya','Adi','Madhya','Adi','Adi','Madhya','Antya','Antya','Madhya','Adi','Adi','Madhya','Antya','Antya','Madhya','Adi','Adi','Madhya','Antya','Antya','Madhya','Adi','Adi','Madhya','Antya'];
+const YONI_HI=['अश्व','गज','मेष','सर्प','सर्प','श्वान','मार्जार','मेष','मार्जार','मूषक','मूषक','गौ','महिष','व्याघ्र','महिष','व्याघ्र','मृग','मृग','श्वान','वानर','नकुल','वानर','सिंह','अश्व','सिंह','गौ','गज'];
+const YONI_EN=['Horse','Elephant','Sheep','Serpent','Serpent','Dog','Cat','Sheep','Cat','Rat','Rat','Cow','Buffalo','Tiger','Buffalo','Tiger','Deer','Deer','Dog','Monkey','Mongoose','Monkey','Lion','Horse','Lion','Cow','Elephant'];
+const SIGN_LORD_IDX=[2,5,3,1,0,3,5,2,4,6,6,4];
+function varnaOf(sign,L){const x=[1,2,3,0,1,2,3,0,1,2,3,0][sign%12];const hi=['ब्राह्मण','क्षत्रिय','वैश्य','शूद्र'];const en=['Brahmin','Kshatriya','Vaishya','Shudra'];return (L==='hi'?hi:en)[x]}
+function vashyaOf(sign,L){const hi=['चतुष्पद','चतुष्पद','मानव','जलचर','वनचर','मानव','मानव','कीट','मानव','चतुष्पद','मानव','जलचर'];const en=['Quadruped','Quadruped','Human','Water','Wild','Human','Human','Insect','Human','Quadruped','Human','Water'];return (L==='hi'?hi:en)[sign]}
+function birthAttrs(c,L,Z,LORD){const i=c.moonNak.i;return {gana:(L==='hi'?GANA_HI:GANA_EN)[i],nadi:(L==='hi'?NADI_HI:NADI_EN)[i],yoni:(L==='hi'?YONI_HI:YONI_EN)[i],varna:varnaOf(c.moonSign,L),vashya:vashyaOf(c.moonSign,L),rashiLord:LORD[SIGN_LORD_IDX[c.moonSign]],nakLord:LORD[i%9]}}
+
+
+function extraKundli(c,L,Z,PL){
+ const hp=n=>RVAstro.P_EN.filter(p=>RVAstro.houseFrom(c.pos[p],c.ascSign)===n).map(p=>PL[RVAstro.P_EN.indexOf(p)]), list=n=>hp(n).join(', ')||RVT('कोई प्रमुख ग्रह नहीं','No major planet');
+ const sat=RVAstro.sadeSati(c.moonSign), satHi={phase1:'साढ़े साती का पहला चरण',phase2:'साढ़े साती का दूसरा चरण',phase3:'साढ़े साती का अंतिम चरण',dhaiya:'शनि की ढैया',none:'साढ़े साती या ढैया सक्रिय नहीं'}[sat.code],satEn={phase1:'first phase of Sade Sati',phase2:'second phase of Sade Sati',phase3:'final phase of Sade Sati',dhaiya:'Shani Dhaiya',none:'no active Sade Sati or Dhaiya'}[sat.code];
+ return {
+  education:RVT(`पंचम भाव ${Z[(c.ascSign+4)%12]} राशि में है और इसमें ${list(5)} का प्रभाव दिखता है। पढ़ाई और नई चीजें सीखने में आपकी गति तब बेहतर रहती है जब विषय का व्यावहारिक उपयोग साफ दिखे। लंबे समय की तैयारी में नियमितता बनाए रखना और बीच-बीच में दिशा बदलने से बचना ज्यादा लाभ देगा।`,`The 5th house falls in ${Z[(c.ascSign+4)%12]} with ${list(5)} influencing it. Learning improves when the practical purpose is clear. Consistency in long preparation is more useful than frequent changes in direction.`),
+  family:RVT(`दूसरा और चौथा भाव परिवार, घर और स्थिरता की तस्वीर बनाते हैं। दूसरे भाव में ${list(2)} और चौथे भाव में ${list(4)} दिखाई देते हैं। परिवार की जिम्मेदारियाँ समय-समय पर बढ़ सकती हैं, लेकिन साफ बातचीत और आर्थिक योजना से घर का संतुलन बेहतर बना रहता है।`,`The 2nd and 4th houses describe family and home stability. The 2nd contains ${list(2)} and the 4th contains ${list(4)}. Family responsibilities can rise at times, but clear communication and financial planning help maintain balance.`),
+  children:RVT(`संतान और रचनात्मकता के संकेत पंचम भाव से देखे जाते हैं। यहां ${list(5)} का प्रभाव होने से इस क्षेत्र में धैर्य, सही समय और जिम्मेदारी महत्वपूर्ण रहती है। बच्चों से जुड़े बड़े फैसलों में केवल एक संकेत पर नहीं, पूरे समय-चक्र और वास्तविक परिस्थितियों पर ध्यान देना बेहतर रहेगा।`,`Children and creativity are read mainly through the 5th house. With ${list(5)} influencing it, patience, timing and responsibility matter. Major decisions should be based on the broader timing pattern and real circumstances rather than one indicator.`),
+  health:RVT(`पहला और छठा भाव दिनचर्या, ऊर्जा और स्वास्थ्य की आदतों से जुड़े हैं। छठे भाव में ${list(6)} है। आपके लिए नियमित नींद, भोजन और काम के बीच संतुलन बनाए रखना खास महत्व रखता है; तनाव बढ़ने पर दिनचर्या टूटना मुख्य कमजोरी बन सकती है।`,`The 1st and 6th houses relate to routine, energy and well-being. The 6th contains ${list(6)}. Regular sleep, meals and work-life rhythm matter; stress is more likely to cause trouble when routine breaks down.`),
+  property:RVT(`चौथा भाव घर, वाहन और संपत्ति से जुड़ा है और इसमें ${list(4)} का प्रभाव है। संपत्ति या वाहन से जुड़े फैसलों में दस्तावेज, भुगतान और समय को अच्छी तरह जांचना उपयोगी रहेगा। सही तैयारी के साथ यह क्षेत्र स्थिरता देने वाला बन सकता है।`,`The 4th house relates to home, vehicles and property and is influenced by ${list(4)}. Check documents, payments and timing carefully in major property or vehicle decisions. With preparation, this area can provide stability.`),
+  travel:RVT(`तीसरा, नवम और द्वादश भाव यात्राओं और स्थान परिवर्तन से जुड़े संकेत देते हैं। नवम भाव में ${list(9)} और द्वादश भाव में ${list(12)} है। काम, शिक्षा या परिवार के कारण यात्रा के अवसर बन सकते हैं; अचानक योजना बनने पर खर्च और समय का अतिरिक्त ध्यान रखें।`,`The 3rd, 9th and 12th houses contribute to travel and relocation themes. The 9th contains ${list(9)} and the 12th ${list(12)}. Travel for work, study or family can arise; when plans are sudden, watch time and expenses carefully.`),
+  spiritual:RVT(`नवम और द्वादश भाव जीवन-दृष्टि, आस्था और भीतर की शांति से जुड़े हैं। यहां ${list(9)} और ${list(12)} का प्रभाव दिखता है। नियमित प्रार्थना, ध्यान, सेवा या शांत समय आपके लिए मानसिक स्पष्टता बढ़ाने वाला अभ्यास बन सकता है।`,`The 9th and 12th houses relate to worldview, faith and inner calm, with ${list(9)} and ${list(12)} influencing them. Prayer, meditation, service or quiet reflection can support mental clarity.`),
+  transit:RVT(`वर्तमान शनि स्थिति के अनुसार ${satHi} है। शनि के समय में काम, अनुशासन, जिम्मेदारी और लंबे समय की योजनाओं को प्राथमिकता देना सबसे उपयोगी रहता है। यदि दबाव बढ़े तो जल्दबाजी, अनावश्यक विवाद और काम टालने से बचें।`,`Current Saturn status shows ${satEn}. Saturn periods favour discipline, responsibility and long-term planning. If pressure rises, avoid haste, needless conflict and procrastination.`),
+  remedies:RVT(`रोजमर्रा में एक सरल नियम रखें—महत्वपूर्ण काम समय पर पूरा करें, बड़ों और श्रम करने वाले लोगों का सम्मान करें और सप्ताह में एक दिन जरूरतमंद की सहायता करें। शनिवार को श्रद्धा से “ॐ शनैश्चराय नमः” 11 बार और गुरुवार को “ॐ बृं बृहस्पतये नमः” 11 बार जप किया जा सकता है। उपाय को डर के कारण नहीं, नियमितता और मन की स्थिरता के लिए करें।`,`Keep one simple routine: finish important work on time, respect elders and working people, and help someone in need once a week. Traditional practice may include 11 repetitions of “Om Sham Shanicharaya Namah” on Saturday and “Om Brim Brihaspataye Namah” on Thursday. Use remedies for steadiness rather than fear.`)
+ }
+}
+
+function makeKundli(){
+ const b=validBirth('k');if(!b){alert(RVT('सही 4-अंकों वाले वर्ष के साथ जन्म तिथि भरें।','Enter a valid birth date with a 4-digit year.'));return}
+ const lat=+kLat.value,lon=+kLon.value;if(!Number.isFinite(lat)||!Number.isFinite(lon)||(!lat&&!lon)){alert(RVT('सूची से जन्म स्थान चुनें या Latitude/Longitude भरें।','Select a birth place from the list or enter latitude/longitude.'));return}
+ const date=RVAstro.toDate(b.y,b.m,b.d,kH.value,kMin.value,kAP.value,kTz.value),c=RVAstro.chart(date,lat,lon),d=RVAstro.vimshottari(c,date),y=RVAstro.yogas(c),L=RVLang();
+ const Z=L==='hi'?RVAstro.Z_HI:RVAstro.Z_EN,N=L==='hi'?RVAstro.NAK_HI:RVAstro.NAK_EN,PL=L==='hi'?RVAstro.P_HI:RVAstro.P_EN,LORD=L==='hi'?RVAstro.LORD_HI:RVAstro.LORD_EN;
+ const rows=RVAstro.P_EN.map((p,i)=>`<tr><td>${PL[i]}</td><td>${Z[RVAstro.signIndex(c.pos[p])]}</td><td>${RVAstro.mod(c.pos[p],30).toFixed(2)}°</td><td>${RVAstro.houseFrom(c.pos[p],c.ascSign)}</td><td>${Z[c.nav[p]]}</td></tr>`).join('');
+ const houseRows=Array.from({length:12},(_,i)=>{const planets=RVAstro.P_EN.filter(p=>RVAstro.houseFrom(c.pos[p],c.ascSign)===i+1).map(p=>PL[RVAstro.P_EN.indexOf(p)]).join(', ')||'—';return `<tr><td>${i+1}</td><td>${Z[(c.ascSign+i)%12]}</td><td>${planets}</td></tr>`}).join('');
+ const md=d.md?LORD[d.md.idx]:'—',ad=d.ad?LORD[d.ad.idx]:'—',R=longReport(c,d,y,L,kName.value.trim()),nr=nameRashiIndex(kName.value.trim()),A=birthAttrs(c,L,Z,LORD),X=extraKundli(c,L,Z,PL);
+ if(window.RVAccount){const a=RVAccount.getActiveProfile();if(a&&String(a.name||'').trim()===String(kName.value||'').trim()){RVAccount.saveProfile({...a,moonSign:c.moonSign,nakshatra:c.moonNak.i,ascSign:c.ascSign,nameRashi:nr},true)}}
+ kundliResult.classList.remove('hidden');
+ kundliResult.innerHTML=`<div id="kundliReportBody" class="kundli-report">
+ <div class="report-cover"><span class="badge">RashiVibe • ${RVT('गहन वैदिक विश्लेषण','Detailed Vedic Analysis')}</span><h2>${RVT('आपकी विस्तृत जन्म कुंडली','Your Detailed Birth Kundli')}</h2><p>${esc(kName.value.trim()||RVT('जन्म कुंडली','Birth Kundli'))} · ${String(b.d).padStart(2,'0')}-${String(b.m).padStart(2,'0')}-${b.y} · ${kH.value}:${String(kMin.value).padStart(2,'0')} ${kAP.value} · ${esc(kPlace.value||`${lat}, ${lon}`)}</p></div>
+ <div class="kundli-chart-card"><h3>${RVT('जन्म कुंडली','Birth Kundli')}</h3>${northChartK(c,Z,kName.value.trim()||RVT('जन्म कुंडली','Birth Kundli'))}</div>
+ <div class="kpi"><div class="card"><h3>${RVT('लग्न','Ascendant')}</h3><strong>${Z[c.ascSign]} ${RVAstro.mod(c.asc,30).toFixed(2)}°</strong></div><div class="card"><h3>${RVT('जन्म राशि (चंद्र)','Birth Moon Sign')}</h3><strong>${Z[c.moonSign]}</strong><small>${RVT('जन्म समय पर चंद्रमा से','From the Moon at birth')}</small></div><div class="card"><h3>${RVT('नाम राशि','Name Rashi')}</h3><strong>${nr===null?RVT('नाम से स्पष्ट नहीं','Not clear from name'):Z[nr]}</strong><small>${RVT('नाम के शुरुआती उच्चारण से','From the opening sound of the name')}</small></div><div class="card"><h3>${RVT('नक्षत्र','Nakshatra')}</h3><strong>${N[c.moonNak.i]} · ${RVT('पद','Pada')} ${c.moonNak.pada}</strong></div></div>
+ <div class="grid four birth-attrs"><div class="card"><h3>${RVT('गण','Gana')}</h3><strong>${A.gana}</strong></div><div class="card"><h3>${RVT('नाड़ी','Nadi')}</h3><strong>${A.nadi}</strong></div><div class="card"><h3>${RVT('योनि','Yoni')}</h3><strong>${A.yoni}</strong></div><div class="card"><h3>${RVT('वर्ण','Varna')}</h3><strong>${A.varna}</strong></div><div class="card"><h3>${RVT('वश्य','Vashya')}</h3><strong>${A.vashya}</strong></div><div class="card"><h3>${RVT('राशि स्वामी','Rashi Lord')}</h3><strong>${A.rashiLord}</strong></div><div class="card"><h3>${RVT('नक्षत्र स्वामी','Nakshatra Lord')}</h3><strong>${A.nakLord}</strong></div><div class="card"><h3>${RVT('सूर्य राशि','Sun Sign')}</h3><strong>${Z[RVAstro.signIndex(c.pos.Sun)]}</strong></div></div>
+ <div class="report-section feature"><h3>${RVT('आपकी कुंडली की मुख्य बातें','Key Highlights of Your Kundli')}</h3><p>${R.summary}</p></div>
+
+ <div class="report-section"><h3>${RVT('ग्रहों की स्थिति','Planetary Positions')}</h3><div class="table-scroll"><table class="planet-table"><thead><tr><th>${RVT('ग्रह','Planet')}</th><th>${RVT('राशि','Sign')}</th><th>${RVT('अंश','Degree')}</th><th>${RVT('भाव','House')}</th><th>${RVT('नवांश राशि','Deep sign')}</th></tr></thead><tbody>${rows}</tbody></table></div></div>
+ <div class="report-section"><h3>${RVT('12 भावों की स्थिति','12-House Overview')}</h3><div class="table-scroll"><table class="planet-table"><thead><tr><th>${RVT('भाव','House')}</th><th>${RVT('राशि','Sign')}</th><th>${RVT('ग्रह','Planets')}</th></tr></thead><tbody>${houseRows}</tbody></table></div></div>
+ <div class="report-section prose"><h3>${RVT('व्यक्तित्व और जीवन शैली','Personality & Life Pattern')}</h3><p>${R.personality}</p></div>
+ <div class="report-section prose"><h3>${RVT('करियर और काम की दिशा','Career & Work Direction')}</h3><p>${R.career}</p></div>
+ <div class="report-section prose"><h3>${RVT('धन और आर्थिक व्यवहार','Finance & Money Patterns')}</h3><p>${R.finance}</p></div>
+ <div class="report-section prose"><h3>${RVT('शिक्षा और सीखने की दिशा','Education & Learning')}</h3><p>${X.education}</p></div>
+ <div class="report-section prose"><h3>${RVT('परिवार और गृहस्थ जीवन','Family & Home Life')}</h3><p>${X.family}</p></div>
+ <div class="report-section prose"><h3>${RVT('संतान और रचनात्मकता','Children & Creativity')}</h3><p>${X.children}</p></div>
+ <div class="report-section prose"><h3>${RVT('स्वास्थ्य और दिनचर्या','Well-being & Routine')}</h3><p>${X.health}</p></div>
+ <div class="report-section prose"><h3>${RVT('घर, संपत्ति और वाहन','Home, Property & Vehicle')}</h3><p>${X.property}</p></div>
+ <div class="report-section prose"><h3>${RVT('यात्रा और स्थान परिवर्तन','Travel & Relocation')}</h3><p>${X.travel}</p></div>
+ <div class="report-section prose"><h3>${RVT('आस्था और आध्यात्मिक झुकाव','Faith & Spiritual Inclination')}</h3><p>${X.spiritual}</p></div>
+ <div class="report-section prose"><h3>${RVT('संबंध, विवाह और साझेदारी','Relationships, Marriage & Partnership')}</h3><p>${R.relationship}</p></div>
+ <div class="report-section prose"><h3>${RVT('विम्शोत्तरी दशा और वर्तमान समय','Vimshottari Dasha & Current Timing')}</h3><p class="dasha-chip">${RVT('महादशा','Mahadasha')}: <strong>${md}</strong> · ${RVT('अंतर्दशा','Antardasha')}: <strong>${ad}</strong></p><p>${R.dasha}</p></div>
+ <div class="report-section prose"><h3>${RVT('योग, मंगल संकेत और सावधानी','Yogas, Manglik Indicator & Caution')}</h3><p>${R.yoga}</p></div>
+ <div class="report-section prose"><h3>${RVT('वर्तमान गोचर और शनि संकेत','Current Transit & Saturn')}</h3><p>${X.transit}</p></div>
+ <div class="report-section prose"><h3>${RVT('सरल पारंपरिक उपाय','Simple Traditional Remedies')}</h3><p>${X.remedies}</p></div>
+ <p class="notice">${RVT('ज्योतिषीय जानकारी पारंपरिक मार्गदर्शन के लिए है।','Astrological information is for traditional guidance.')}</p>
+ </div>
+ <div class="report-actions"><button class="btn ghost" type="button" onclick="printReport()">${RVT('🖨️ रिपोर्ट प्रिंट करें','🖨️ Print Report')}</button><button class="btn primary" id="pdfBtn" type="button" onclick="downloadPDF()">${RVT('📄 PDF डाउनलोड करें','📄 Download PDF')}</button></div>`;
+ kundliResult.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.addEventListener('DOMContentLoaded',()=>{loadKundliLocal();kundliBtn.onclick=makeKundli;document.getElementById('saveKundliProfile').onclick=saveKundliLocal});
+document.addEventListener('rv-language',()=>{if(!kundliResult.classList.contains('hidden'))makeKundli()});
+</script>
+
+<script>
+function rvReversePlace(prefix){const lat=document.getElementById(prefix+'Lat'),lon=document.getElementById(prefix+'Lon'),place=document.getElementById(prefix+'Place');if(!lat||!lon||!place)return;let t;async function go(){const a=+lat.value,b=+lon.value;if(!Number.isFinite(a)||!Number.isFinite(b))return;try{const r=await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${a}&lon=${b}&zoom=12&addressdetails=1`,{headers:{'Accept-Language':RVLang()==='hi'?'hi,en':'en'}});if(!r.ok)return;const d=await r.json(),ad=d.address||{},name=[ad.suburb||ad.village||ad.town||ad.city||ad.county,ad.state,ad.country].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).join(', ');if(name)place.value=name}catch(e){}}[lat,lon].forEach(el=>el.addEventListener('change',()=>{clearTimeout(t);t=setTimeout(go,350)}))}
+</script><script>document.addEventListener('DOMContentLoaded',()=>{rvReversePlace('k');});</script>
+<script src="assets/language.js"></script>
+<script src="assets/popup.js"></script></body></html>

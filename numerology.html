@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Numerology | RashiVibe</title>
+<meta name="description" content="Numerology calculator for Life Path, Birth Number and Name Number.">
+<meta name="theme-color" content="#fff6e8">
+<link rel="icon" href="assets/rashivibe-icon.png">
+<link rel="stylesheet" href="assets/rashivibe.css">
+<script src="assets/account.js" defer></script>
+</head>
+<body>
+<div class="topbar"><div class="container"><span class="brandline" data-hi="ॐ • RashiVibe • Your Stars. Your Story." data-en="ॐ • RashiVibe • Your Stars. Your Story.">ॐ • RashiVibe • Your Stars. Your Story.</span><span id="liveClock"></span></div></div>
+<header><div class="container nav">
+<a class="brand" href="index.html" aria-label="RashiVibe home"><img src="assets/rashivibe-logo.png" alt="RashiVibe"></a>
+<nav class="navlinks" id="navlinks"><a href="index.html" class="" data-hi="होम" data-en="Home">होम</a><a href="free-kundli.html" class="" data-hi="कुंडली" data-en="Kundli">कुंडली</a><a href="kundli-matching.html" class="" data-hi="कुंडली मिलान" data-en="Kundli Matching">कुंडली मिलान</a><a href="rashifal/index.html" class="" data-hi="राशिफल" data-en="Rashifal">राशिफल</a><a href="numerology.html" class="active" data-hi="अंक ज्योतिष" data-en="Numerology">अंक ज्योतिष</a><a href="panchang.html" class="" data-hi="पंचांग" data-en="Panchang">पंचांग</a><a href="sade-sati.html" class="" data-hi="साढ़े साती" data-en="Sade Sati">साढ़े साती</a><a href="muhurat.html" class="" data-hi="मुहूर्त" data-en="Muhurat">मुहूर्त</a><a href="ratna-salah.html" class="" data-hi="रत्न सलाह" data-en="Gemstone Advice">रत्न सलाह</a></nav>
+<a id="rvProfilePill" class="rv-profile-pill" href="login.html" data-title-hi="लॉगिन / प्रोफाइल" data-title-en="Login / Profile"><span class="rv-profile-dot">●</span><span data-hi="लॉगिन" data-en="Login">लॉगिन</span></a><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">ENG</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
+</div></header>
+<main><section class="section"><div class="container"><div class="section-title"><span class="badge">Birth • Life Path • Name</span><h1 data-hi="अंक ज्योतिष" data-en="Numerology">अंक ज्योतिष</h1><p data-hi="जन्म तिथि और नाम से मुख्य अंक देखें।" data-en="Calculate key numbers from your birth date and name.">जन्म तिथि और नाम से मुख्य अंक देखें।</p></div>
+<div class="form-card"><div class="form-grid"><div class="field"><label data-hi="नाम (English spelling)" data-en="Name (English spelling)">नाम (English spelling)</label><input id="numName" data-hi="अपना नाम" data-en="Your name" placeholder="अपना नाम" autocomplete="name"></div><div class="field"><label data-hi="जन्म तिथि (DD / MM / YYYY)" data-en="Birth date (DD / MM / YYYY)">जन्म तिथि (DD / MM / YYYY)</label><div class="date-row"><input id="numD" type="text" inputmode="numeric" maxlength="2" placeholder="DD" aria-label="Day"><input id="numM" type="text" inputmode="numeric" maxlength="2" placeholder="MM" aria-label="Month"><input id="numY" type="text" inputmode="numeric" maxlength="4" placeholder="YYYY" aria-label="Year"></div></div></div><div class="cta"><button class="btn primary" id="numBtn" type="button" data-hi="✨ अंक निकालें" data-en="✨ Calculate Numbers">✨ अंक निकालें</button></div><div id="numResult" class="result hidden" aria-live="polite"></div></div>
+</div></section></main>
+<footer><div class="container footer-grid">
+<div><img src="assets/rashivibe-logo.png" alt="RashiVibe" style="width:230px"><p data-hi="आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।" data-en="Traditional Vedic astrology with a modern experience.">आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।</p></div>
+<div><h3 data-hi="महत्वपूर्ण" data-en="Important">महत्वपूर्ण</h3><div class="footer-links"><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a><a href="privacy.html" data-hi="गोपनीयता" data-en="Privacy">गोपनीयता</a><a href="disclaimer.html" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a><a href="terms.html" data-hi="नियम" data-en="Terms">नियम</a><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></div></div>
+<div><h3>RashiVibe</h3><p>© 2026 RashiVibe</p></div>
+</div></footer>
+
+<script>
+(()=> {
+  const root=document.documentElement;
+  let lang=localStorage.getItem('rvLang')||'hi';
+  function applyLang(){
+    root.lang=lang;
+    document.querySelectorAll('[data-hi][data-en]').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(el.matches('input[placeholder]')) el.placeholder=val;
+      else if(val && val.includes('<')) el.innerHTML=val;
+      else el.textContent=val;
+    });
+    document.querySelectorAll('[data-title-hi][data-title-en]').forEach(el=>el.title=el.getAttribute('data-title-'+lang));
+    const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='hi'?'ENG':'हिंदी';
+    document.dispatchEvent(new CustomEvent('rv-language',{detail:{lang}}));
+  }
+  window.RVLang=()=>lang;
+  window.RVT=(hi,en)=>lang==='hi'?hi:en;
+  window.RVSetLang=()=>{lang=lang==='hi'?'en':'hi';localStorage.setItem('rvLang',lang);applyLang()};
+  document.addEventListener('DOMContentLoaded',()=>{
+    applyLang();
+    const lb=document.getElementById('langBtn');if(lb)lb.onclick=RVSetLang;
+    const mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');if(mb&&nl){mb.onclick=()=>{const open=nl.classList.toggle('open');mb.setAttribute('aria-expanded',String(open));};nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('open');mb.setAttribute('aria-expanded','false');}));}
+    const clock=document.getElementById('liveClock');
+    function tick(){
+      if(!clock)return;
+      const now=new Date(),loc=lang==='hi'?'hi-IN':'en-IN';
+      clock.textContent=new Intl.DateTimeFormat(loc,{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+    }
+    tick();setInterval(tick,1000);
+  });
+})();
+</script>
+
+<script>
+function reduce(n){while(n>9&&![11,22,33].includes(n))n=String(n).split('').reduce((a,b)=>a+(+b),0);return n}
+function nameNum(s){const map={A:1,B:2,C:3,D:4,E:5,F:6,G:7,H:8,I:9,J:1,K:2,L:3,M:4,N:5,O:6,P:7,Q:8,R:9,S:1,T:2,U:3,V:4,W:5,X:6,Y:7,Z:8};let n=0;for(const c of s.toUpperCase())n+=map[c]||0;return reduce(n)}
+const numData={
+ hi:{
+  1:{p:'स्वतंत्र सोच, पहल और नेतृत्व',s:'नई शुरुआत करना, जिम्मेदारी लेना और लक्ष्य पर टिकना',c:'जल्दबाजी या अपनी राय पर जरूरत से ज्यादा टिक जाना',w:'नेतृत्व, उद्यम, प्रशासन, तकनीकी जिम्मेदारी या ऐसा काम जहां निर्णय की जगह मिले',r:'सम्मान और व्यक्तिगत स्पेस',day:'रविवार',color:'सुनहरा/केसरिया'},
+  2:{p:'संवेदनशीलता, सहयोग और संतुलन',s:'लोगों की भावना समझना, मध्यस्थता और टीम में तालमेल',c:'दूसरों की प्रतिक्रिया को बहुत निजी लेना या निर्णय टालना',w:'HR, सेवा, समन्वय, डिजाइन, काउंसलिंग, साझेदारी या सहयोग आधारित काम',r:'भावनात्मक सुरक्षा और नरम संवाद',day:'सोमवार',color:'सफेद/हल्का नीला'},
+  3:{p:'अभिव्यक्ति, रचनात्मकता और संवाद',s:'विचारों को रोचक तरीके से रखना और माहौल हल्का करना',c:'बहुत से काम एक साथ शुरू कर देना या निरंतरता कम होना',w:'मीडिया, शिक्षा, लेखन, मार्केटिंग, प्रस्तुति, कला या संचार',r:'बातचीत, हास्य और मानसिक जुड़ाव',day:'गुरुवार',color:'पीला'},
+  4:{p:'अनुशासन, संरचना और व्यावहारिक सोच',s:'प्रक्रिया बनाना, जिम्मेदारी निभाना और लंबे समय तक टिकना',c:'कठोर दिनचर्या, बदलाव से असहजता या जरूरत से ज्यादा नियंत्रण',w:'इंजीनियरिंग, संचालन, ऑडिट, सिस्टम, प्रशासन और तकनीकी कार्य',r:'विश्वसनीयता और स्थिरता',day:'शनिवार',color:'गहरा नीला/धूसर'},
+  5:{p:'परिवर्तन, जिज्ञासा और स्वतंत्रता',s:'नई जानकारी जल्दी सीखना, लोगों से जुड़ना और बदलती स्थिति में ढलना',c:'बेचैनी, जल्दी ऊबना या जोखिम को कम आंकना',w:'सेल्स, यात्रा, मीडिया, डिजिटल काम, व्यापार, नेटवर्किंग या विविध भूमिका',r:'स्पेस, बातचीत और नया अनुभव',day:'बुधवार',color:'हरा'},
+  6:{p:'जिम्मेदारी, परिवार और देखभाल',s:'लोगों को जोड़ना, सौंदर्य-बोध और भरोसेमंद सहयोग',c:'हर जिम्मेदारी खुद लेने या दूसरों से बहुत अपेक्षा रखने की आदत',w:'शिक्षा, डिजाइन, सेवा, प्रबंधन, आतिथ्य, स्वास्थ्य-सहायक या परिवार-केंद्रित व्यवसाय',r:'प्रतिबद्धता और देखभाल',day:'शुक्रवार',color:'गुलाबी/क्रीम'},
+  7:{p:'विश्लेषण, अध्ययन और आंतरिक खोज',s:'गहराई से सोचना, पैटर्न पहचानना और स्वतंत्र अध्ययन',c:'बहुत सोचते रहना, लोगों से दूरी या अपनी बात देर से साझा करना',w:'रिसर्च, डेटा, आईटी, जांच, लेखन, शिक्षा, दर्शन या विशेषज्ञता वाला क्षेत्र',r:'ईमानदार मानसिक जुड़ाव और निजी स्पेस',day:'सोमवार/गुरुवार',color:'बैंगनी/नीला'},
+  8:{p:'प्रबंधन, लक्ष्य और उपलब्धि',s:'जिम्मेदारी, संसाधन संभालना और परिणाम पर फोकस',c:'काम का दबाव, नियंत्रण की इच्छा या सफलता को केवल परिणाम से मापना',w:'प्रबंधन, वित्त, उद्योग, प्रशासन, व्यवसाय, संपत्ति या बड़े सिस्टम',r:'विश्वसनीयता और साझा जिम्मेदारी',day:'शनिवार',color:'नेवी/काला'},
+  9:{p:'करुणा, व्यापक सोच और सेवा',s:'लोगों को प्रेरित करना, बड़े उद्देश्य से जुड़ना और अनुभव से सीखना',c:'भावनात्मक थकान, अतीत पकड़कर रखना या जरूरत से ज्यादा देना',w:'शिक्षा, सामाजिक कार्य, कला, नेतृत्व, सेवा, सार्वजनिक भूमिका या रचनात्मक क्षेत्र',r:'ईमानदारी और भावनात्मक गहराई',day:'मंगलवार',color:'लाल/मरून'},
+  11:{p:'अंतर्दृष्टि, प्रेरणा और सूक्ष्म संवेदनशीलता',s:'लोगों और विचारों के बीच सूक्ष्म संबंध पकड़ना',c:'मानसिक दबाव, अत्यधिक अपेक्षा या अस्थिर आत्मविश्वास',w:'रचनात्मक नेतृत्व, मार्गदर्शन, शिक्षा, लेखन, डिजाइन या लोगों को प्रेरित करने वाला काम',r:'गहरा मानसिक और भावनात्मक जुड़ाव',day:'सोमवार',color:'सफेद/सिल्वर'},
+  22:{p:'बड़े विचारों को व्यावहारिक रूप देना',s:'दीर्घकालिक योजना, सिस्टम बनाना और बड़े लक्ष्य को चरणों में पूरा करना',c:'बहुत बड़ी जिम्मेदारी उठाना या पूर्णता के दबाव में आना',w:'बड़े प्रोजेक्ट, इंजीनियरिंग, व्यवसाय, प्रशासन, संस्थान निर्माण या दीर्घकालिक नेतृत्व',r:'स्थिरता और साझा उद्देश्य',day:'शनिवार',color:'गहरा हरा/नीला'},
+  33:{p:'सेवा, मार्गदर्शन और जिम्मेदार करुणा',s:'लोगों को संभालना, प्रेरित करना और भावनात्मक सहारा देना',c:'खुद की जरूरत पीछे रखना या हर समस्या अपने ऊपर ले लेना',w:'शिक्षा, मार्गदर्शन, सेवा, कला, समुदाय या मानवीय नेतृत्व',r:'देखभाल और भावनात्मक ईमानदारी',day:'शुक्रवार',color:'क्रीम/गुलाबी'}
+ },
+ en:{}
+};
+const baseEn={1:['independent thinking, initiative and leadership','starting things, taking responsibility and staying focused','rushing or becoming too fixed on your own view','leadership, entrepreneurship, administration or technical responsibility','respect and personal space','Sunday','gold/saffron'],2:['sensitivity, cooperation and balance','reading people, mediating and building teamwork','taking reactions too personally or delaying decisions','HR, service, coordination, design, counselling or partnership work','emotional security and gentle communication','Monday','white/light blue'],3:['expression, creativity and communication','presenting ideas engagingly and lifting the atmosphere','starting too many things or losing consistency','media, education, writing, marketing, art or communication','conversation, humour and mental connection','Thursday','yellow'],4:['discipline, structure and practical thinking','building process, carrying responsibility and staying consistent','rigidity or discomfort with change','engineering, operations, audit, systems and administration','reliability and stability','Saturday','deep blue/grey'],5:['change, curiosity and freedom','learning quickly, networking and adapting','restlessness or underestimating risk','sales, travel, media, digital work, trade or varied roles','space, conversation and new experiences','Wednesday','green'],6:['responsibility, family and care','bringing people together and offering dependable support','taking every responsibility personally or expecting too much','education, design, service, management and hospitality','commitment and care','Friday','pink/cream'],7:['analysis, study and inner search','thinking deeply, spotting patterns and independent study','overthinking or withdrawing before sharing concerns','research, data, IT, investigation, writing or specialist work','honest mental connection and privacy','Monday/Thursday','purple/blue'],8:['management, goals and achievement','handling responsibility, resources and outcomes','work pressure, control or measuring worth only through results','management, finance, industry, administration or business','reliability and shared responsibility','Saturday','navy/black'],9:['compassion, broad thinking and service','inspiring people, learning through experience and serving a larger purpose','emotional exhaustion or giving too much','education, public work, art, leadership or service','honesty and emotional depth','Tuesday','red/maroon'],11:['insight, inspiration and sensitivity','seeing subtle links between people and ideas','mental pressure or unstable self-confidence','creative leadership, guidance, education or design','deep mental and emotional connection','Monday','white/silver'],22:['turning large ideas into practical form','long-term planning, systems and staged execution','carrying too much responsibility or perfection pressure','large projects, engineering, enterprise or institution building','stability and shared purpose','Saturday','deep green/blue'],33:['service, guidance and responsible compassion','supporting, teaching and emotionally guiding others','ignoring your own needs or carrying everyone’s problems','education, guidance, service, art or community leadership','care and emotional honesty','Friday','cream/pink']};
+Object.entries(baseEn).forEach(([k,v])=>numData.en[k]={p:v[0],s:v[1],c:v[2],w:v[3],r:v[4],day:v[5],color:v[6]});
+function numParagraph(n,label,L){const d=numData[L][n]||numData[L][reduce(n)];if(L==='hi')return `${label} ${n} आपके स्वभाव में ${d.p} की दिशा दिखाता है। इसकी सबसे उपयोगी ताकत ${d.s} है। जब यह ऊर्जा संतुलित रहती है, तो आप परिस्थितियों को अपने तरीके से समझकर लगातार आगे बढ़ सकते हैं। लेकिन हर अंक की तरह इसका दबाव वाला पक्ष भी है—${d.c}। इसलिए महत्वपूर्ण फैसलों में केवल पहली प्रतिक्रिया पर चलने के बजाय तथ्य, समय और जिम्मेदारी को साथ देखना आपके लिए बेहतर रहेगा। काम के मामले में ${d.w} जैसी भूमिकाएं इस अंक की प्रकृति से मेल खा सकती हैं, हालांकि वास्तविक योग्यता, शिक्षा और रुचि हमेशा प्राथमिक रहेंगी। संबंधों में आपके लिए ${d.r} महत्वपूर्ण रहता है। पारंपरिक अंक ज्योतिष में ${d.day} को सहायक दिन और ${d.color} को अनुकूल रंग माना जाता है; इन्हें छोटे सकारात्मक संकेत की तरह लें, नियम की तरह नहीं। इस अंक का सही उपयोग तब होता है जब इसकी ताकत को आदत में बदला जाए और चुनौती वाले हिस्से पर जागरूकता रखी जाए।`;
+ return `${label} ${n} points toward ${d.p}. Its most useful strength is ${d.s}. When this energy is balanced, you can understand situations in your own way and keep moving with purpose. Like every number, it also has a pressure side: ${d.c}. For important decisions, it is therefore better to combine instinct with facts, timing and responsibility rather than acting only on the first reaction. In work, roles connected with ${d.w} can fit the style of this number, although actual skills, education and interests should always come first. In relationships, ${d.r} tends to matter. Traditional numerology treats ${d.day} as a supportive day and ${d.color} as a favourable colour; use them as light symbolic cues rather than rules. The number becomes most useful when its strengths are converted into habits and its challenge pattern is noticed early enough to make a better choice.`}
+function renderNum(){
+ const d=+numD.value,m=+numM.value,y=+numY.value,name=numName.value.trim();
+ const chosen=new Date(Date.UTC(y,m-1,d)),today=new Date();
+ const valid=y>=1900&&y<=today.getUTCFullYear()&&m>=1&&m<=12&&d>=1&&d<=31&&chosen.getUTCFullYear()===y&&chosen.getUTCMonth()===m-1&&chosen.getUTCDate()===d&&chosen<=today;
+ if(!valid){alert(RVT('सही जन्म तिथि DD / MM / YYYY में भरें।','Enter a valid birth date as DD / MM / YYYY.'));return}
+ let sum=[...(`${y}${String(m).padStart(2,'0')}${String(d).padStart(2,'0')}`)].reduce((a,b)=>a+(+b),0),lp=reduce(sum),bn=reduce(d),nn=name?nameNum(name):null,L=RVLang();
+ const combined=L==='hi'?`आपके जन्मांक ${bn} और भाग्यांक ${lp} को साथ पढ़ने पर व्यक्तित्व का व्यावहारिक और दीर्घकालिक पैटर्न अधिक स्पष्ट होता है। जन्मांक रोजमर्रा की प्रतिक्रिया और स्वभाव का तेज़ हिस्सा दिखाता है, जबकि भाग्यांक जीवन में बार-बार सामने आने वाले सीखने के विषय और दिशा को व्यापक रूप से बताता है। ${bn===lp?'दोनों अंक समान होने से उसी मूल प्रवृत्ति की ताकत और चुनौती दोनों ज्यादा स्पष्ट दिखाई देती हैं।':'दोनों अंक अलग होने से आपके अंदर दो तरह की ऊर्जा साथ काम करती है; कई बार तत्काल प्रतिक्रिया एक दिशा में होगी जबकि लंबे समय का लक्ष्य दूसरी दिशा मांग सकता है।'} ${nn?`नामांक ${nn} आपकी सामाजिक अभिव्यक्ति और उस तरीके का अतिरिक्त संकेत देता है जिससे लोग आपको काम, बातचीत या सार्वजनिक पहचान में महसूस करते हैं। तीनों अंकों को मिलाकर पढ़ना किसी एक अंक की तुलना में अधिक संतुलित चित्र देता है।`:'नाम जोड़ने पर नामांक भी निकलेगा, जिससे सामाजिक अभिव्यक्ति का एक अतिरिक्त स्तर जुड़ जाएगा।'} इन अंकों को निश्चित भविष्यवाणी की जगह अपने व्यवहार, फैसलों और प्राथमिकताओं को समझने का पारंपरिक ढांचा मानें।`:`Reading Birth Number ${bn} with Life Path ${lp} gives a more complete view than treating either number alone. The Birth Number describes the faster, everyday reaction pattern, while the Life Path reflects broader themes that tend to repeat across longer phases of life. ${bn===lp?'Because both numbers match, the same core strength and challenge can become more visible.':'Because the numbers differ, two styles may operate together: your immediate response can pull one way while the longer-term goal asks for another.'} ${nn?`Name Number ${nn} adds a social layer, describing how your expression may be perceived in work, communication or public identity. Reading all three together gives a more balanced picture.`:'Adding your name will calculate a Name Number and add a social-expression layer.'} Use these numbers as a traditional framework for reflection rather than as fixed predictions.`;
+ numResult.classList.remove('hidden');numResult.innerHTML=`<h2>${RVT('आपकी विस्तृत अंक ज्योतिष रिपोर्ट','Your Detailed Numerology Report')}</h2><div class="kpi"><div class="card"><h3>${RVT('भाग्यांक / Life Path','Life Path')}</h3><strong>${lp}</strong></div><div class="card"><h3>${RVT('जन्मांक','Birth Number')}</h3><strong>${bn}</strong></div><div class="card"><h3>${RVT('नामांक','Name Number')}</h3><strong>${nn??'—'}</strong></div></div><div class="report-section prose"><h3>${RVT('भाग्यांक का विस्तृत अर्थ','Detailed Life Path Meaning')}</h3><p>${numParagraph(lp,RVT('आपका भाग्यांक','Your Life Path is'),L)}</p></div><div class="report-section prose"><h3>${RVT('जन्मांक का विस्तृत अर्थ','Detailed Birth Number Meaning')}</h3><p>${numParagraph(bn,RVT('आपका जन्मांक','Your Birth Number is'),L)}</p></div>${nn?`<div class="report-section prose"><h3>${RVT('नामांक का विस्तृत अर्थ','Detailed Name Number Meaning')}</h3><p>${numParagraph(nn,RVT('आपका नामांक','Your Name Number is'),L)}</p></div>`:''}<div class="report-section prose"><h3>${RVT('तीनों अंकों का संयुक्त संकेत','Combined Interpretation')}</h3><p>${combined}</p></div><p class="notice">${RVT('अंक ज्योतिष पारंपरिक मार्गदर्शन के लिए है।','Numerology is for traditional guidance.')}</p>`;
+ numResult.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.addEventListener('DOMContentLoaded',()=>{['numD','numM','numY'].forEach(id=>document.getElementById(id).addEventListener('input',e=>e.target.value=e.target.value.replace(/\D/g,'').slice(0,+e.target.maxLength)));numBtn.onclick=renderNum});document.addEventListener('rv-language',()=>{if(!numResult.classList.contains('hidden'))renderNum()});
+</script>
+
+<script src="assets/language.js"></script>
+<script src="assets/popup.js"></script></body></html>

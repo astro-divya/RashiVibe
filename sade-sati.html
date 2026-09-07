@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sade Sati | RashiVibe</title>
+<meta name="description" content="Sade Sati and Dhaiya calculator based on current sidereal Saturn transit and Moon sign.">
+<meta name="theme-color" content="#fff6e8">
+<link rel="icon" href="assets/rashivibe-icon.png">
+<link rel="stylesheet" href="assets/rashivibe.css">
+<script src="assets/account.js" defer></script>
+</head>
+<body>
+<div class="topbar"><div class="container"><span class="brandline" data-hi="ॐ • RashiVibe • Your Stars. Your Story." data-en="ॐ • RashiVibe • Your Stars. Your Story.">ॐ • RashiVibe • Your Stars. Your Story.</span><span id="liveClock"></span></div></div>
+<header><div class="container nav">
+<a class="brand" href="index.html" aria-label="RashiVibe home"><img src="assets/rashivibe-logo.png" alt="RashiVibe"></a>
+<nav class="navlinks" id="navlinks"><a href="index.html" class="" data-hi="होम" data-en="Home">होम</a><a href="free-kundli.html" class="" data-hi="कुंडली" data-en="Kundli">कुंडली</a><a href="kundli-matching.html" class="" data-hi="कुंडली मिलान" data-en="Kundli Matching">कुंडली मिलान</a><a href="rashifal/index.html" class="" data-hi="राशिफल" data-en="Rashifal">राशिफल</a><a href="numerology.html" class="" data-hi="अंक ज्योतिष" data-en="Numerology">अंक ज्योतिष</a><a href="panchang.html" class="" data-hi="पंचांग" data-en="Panchang">पंचांग</a><a href="sade-sati.html" class="active" data-hi="साढ़े साती" data-en="Sade Sati">साढ़े साती</a><a href="muhurat.html" class="" data-hi="मुहूर्त" data-en="Muhurat">मुहूर्त</a><a href="ratna-salah.html" class="" data-hi="रत्न सलाह" data-en="Gemstone Advice">रत्न सलाह</a></nav>
+<a id="rvProfilePill" class="rv-profile-pill" href="login.html" data-title-hi="लॉगिन / प्रोफाइल" data-title-en="Login / Profile"><span class="rv-profile-dot">●</span><span data-hi="लॉगिन" data-en="Login">लॉगिन</span></a><button class="lang-btn" id="langBtn" type="button" aria-label="Switch language">ENG</button><button class="menu-btn" id="menuBtn" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false">☰</button>
+</div></header>
+<main><section class="section"><div class="container"><div class="section-title"><span class="badge">Saturn Transit</span><h1 data-hi="साढ़े साती और ढैया" data-en="Sade Sati & Dhaiya">साढ़े साती और ढैया</h1><p data-hi="अपनी चंद्र राशि चुनकर वर्तमान शनि स्थिति के आधार पर चरण देखें।" data-en="Choose your Moon sign to check the current Saturn phase.">अपनी चंद्र राशि चुनकर वर्तमान शनि स्थिति के आधार पर चरण देखें।</p></div>
+<div class="form-card"><div class="field"><label data-hi="चंद्र राशि" data-en="Moon Sign">चंद्र राशि</label><select id="sadeSign"></select></div><div class="cta"><button id="sadeBtn" class="btn primary" data-hi="स्थिति देखें" data-en="Check Status">स्थिति देखें</button></div><div id="sadeResult" class="result hidden"></div></div>
+</div></section></main>
+<footer><div class="container footer-grid">
+<div><img src="assets/rashivibe-logo.png" alt="RashiVibe" style="width:230px"><p data-hi="आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।" data-en="Traditional Vedic astrology with a modern experience.">आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।</p></div>
+<div><h3 data-hi="महत्वपूर्ण" data-en="Important">महत्वपूर्ण</h3><div class="footer-links"><a href="about.html" data-hi="हमारे बारे में" data-en="About">हमारे बारे में</a><a href="privacy.html" data-hi="गोपनीयता" data-en="Privacy">गोपनीयता</a><a href="disclaimer.html" data-hi="अस्वीकरण" data-en="Disclaimer">अस्वीकरण</a><a href="terms.html" data-hi="नियम" data-en="Terms">नियम</a><a href="contact.html" data-hi="संपर्क" data-en="Contact">संपर्क</a></div></div>
+<div><h3>RashiVibe</h3><p>© 2026 RashiVibe</p></div>
+</div></footer>
+
+<script>
+(()=> {
+  const root=document.documentElement;
+  let lang=localStorage.getItem('rvLang')||'hi';
+  function applyLang(){
+    root.lang=lang;
+    document.querySelectorAll('[data-hi][data-en]').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(el.matches('input[placeholder]')) el.placeholder=val;
+      else if(val && val.includes('<')) el.innerHTML=val;
+      else el.textContent=val;
+    });
+    document.querySelectorAll('[data-title-hi][data-title-en]').forEach(el=>el.title=el.getAttribute('data-title-'+lang));
+    const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='hi'?'ENG':'हिंदी';
+    document.dispatchEvent(new CustomEvent('rv-language',{detail:{lang}}));
+  }
+  window.RVLang=()=>lang;
+  window.RVT=(hi,en)=>lang==='hi'?hi:en;
+  window.RVSetLang=()=>{lang=lang==='hi'?'en':'hi';localStorage.setItem('rvLang',lang);applyLang()};
+  document.addEventListener('DOMContentLoaded',()=>{
+    applyLang();
+    const lb=document.getElementById('langBtn');if(lb)lb.onclick=RVSetLang;
+    const mb=document.getElementById('menuBtn'),nl=document.getElementById('navlinks');if(mb&&nl){mb.onclick=()=>{const open=nl.classList.toggle('open');mb.setAttribute('aria-expanded',String(open));};nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nl.classList.remove('open');mb.setAttribute('aria-expanded','false');}));}
+    const clock=document.getElementById('liveClock');
+    function tick(){
+      if(!clock)return;
+      const now=new Date(),loc=lang==='hi'?'hi-IN':'en-IN';
+      clock.textContent=new Intl.DateTimeFormat(loc,{weekday:'short',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+    }
+    tick();setInterval(tick,1000);
+  });
+})();
+</script>
+
+<script>
+const RVAstro=(()=>{
+const Z_HI=['मेष','वृषभ','मिथुन','कर्क','सिंह','कन्या','तुला','वृश्चिक','धनु','मकर','कुंभ','मीन'];
+const Z_EN=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+const NAK_HI=['अश्विनी','भरणी','कृत्तिका','रोहिणी','मृगशिरा','आर्द्रा','पुनर्वसु','पुष्य','आश्लेषा','मघा','पूर्व फाल्गुनी','उत्तर फाल्गुनी','हस्त','चित्रा','स्वाती','विशाखा','अनुराधा','ज्येष्ठा','मूल','पूर्वाषाढ़ा','उत्तराषाढ़ा','श्रवण','धनिष्ठा','शतभिषा','पूर्व भाद्रपद','उत्तर भाद्रपद','रेवती'];
+const NAK_EN=['Ashwini','Bharani','Krittika','Rohini','Mrigashira','Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha','Jyeshtha','Mula','Purva Ashadha','Uttara Ashadha','Shravana','Dhanishta','Shatabhisha','Purva Bhadrapada','Uttara Bhadrapada','Revati'];
+const LORD_HI=['केतु','शुक्र','सूर्य','चंद्र','मंगल','राहु','गुरु','शनि','बुध'];
+const LORD_EN=['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury'];
+const DURATION=[7,20,6,10,7,18,16,19,17];
+const P_EN=['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Rahu','Ketu'];
+const P_HI=['सूर्य','चंद्र','बुध','शुक्र','मंगल','गुरु','शनि','राहु','केतु'];
+const mod=(x,n=360)=>((x%n)+n)%n, rad=x=>x*Math.PI/180, deg=x=>x*180/Math.PI;
+const jd=d=>d.getTime()/86400000+2440587.5;
+const ayan=j=>23.85675+0.013968*((j-2451545.0)/365.2425);
+function solveE(M,e){let E=rad(M)+e*Math.sin(rad(M))*(1+e*Math.cos(rad(M)));for(let i=0;i<6;i++)E=E-(E-e*Math.sin(E)-rad(M))/(1-e*Math.cos(E));return E}
+function sunData(d){
+ let w=282.9404+4.70935E-5*d,e=.016709-1.151E-9*d,M=mod(356.0470+.9856002585*d),E=solveE(M,e);
+ let x=Math.cos(E)-e,y=Math.sin(E)*Math.sqrt(1-e*e),r=Math.sqrt(x*x+y*y),v=deg(Math.atan2(y,x)),lon=mod(v+w);
+ return {lon,r,x:r*Math.cos(rad(lon)),y:r*Math.sin(rad(lon))};
+}
+const ELEMENTS={
+ Mercury:d=>[48.3313+3.24587E-5*d,7.0047+5E-8*d,29.1241+1.01444E-5*d,.387098,.205635+5.59E-10*d,168.6562+4.0923344368*d],
+ Venus:d=>[76.6799+2.46590E-5*d,3.3946+2.75E-8*d,54.8910+1.38374E-5*d,.723330,.006773-1.302E-9*d,48.0052+1.6021302244*d],
+ Mars:d=>[49.5574+2.11081E-5*d,1.8497-1.78E-8*d,286.5016+2.92961E-5*d,1.523688,.093405+2.516E-9*d,18.6021+.5240207766*d],
+ Jupiter:d=>[100.4542+2.76854E-5*d,1.3030-1.557E-7*d,273.8777+1.64505E-5*d,5.20256,.048498+4.469E-9*d,19.8950+.0830853001*d],
+ Saturn:d=>[113.6634+2.38980E-5*d,2.4886-1.081E-7*d,339.3939+2.97661E-5*d,9.55475,.055546-9.499E-9*d,316.9670+.0334442282*d]
+};
+function planetHelio(name,d){
+ let [N,i,w,a,e,M]=ELEMENTS[name](d);N=rad(N);i=rad(i);w=rad(w);M=mod(M);
+ let E=solveE(M,e),xv=a*(Math.cos(E)-e),yv=a*Math.sqrt(1-e*e)*Math.sin(E),v=Math.atan2(yv,xv),r=Math.sqrt(xv*xv+yv*yv);
+ let xh=r*(Math.cos(N)*Math.cos(v+w)-Math.sin(N)*Math.sin(v+w)*Math.cos(i));
+ let yh=r*(Math.sin(N)*Math.cos(v+w)+Math.cos(N)*Math.sin(v+w)*Math.cos(i));
+ let zh=r*(Math.sin(v+w)*Math.sin(i));
+ return {x:xh,y:yh,z:zh,lon:mod(deg(Math.atan2(yh,xh)))};
+}
+function moonTropical(j){
+ let n=j-2451545;
+ let L=mod(218.316+13.176396*n),M=mod(134.963+13.064993*n),D=mod(297.850+12.190749*n),F=mod(93.272+13.229350*n),Ms=mod(357.529+.9856003*n);
+ return mod(L+6.289*Math.sin(rad(M))+1.274*Math.sin(rad(2*D-M))+.658*Math.sin(rad(2*D))+.214*Math.sin(rad(2*M))-.186*Math.sin(rad(Ms))-.114*Math.sin(rad(2*F)));
+}
+function positions(date){
+ let j=jd(date),d=j-2451543.5,s=sunData(d),out={};
+ out.Sun=mod(s.lon-ayan(j));out.Moon=mod(moonTropical(j)-ayan(j));
+ for(const p of ['Mercury','Venus','Mars','Jupiter','Saturn']){
+   let h=planetHelio(p,d),x=h.x+s.x,y=h.y+s.y;
+   out[p]=mod(deg(Math.atan2(y,x))-ayan(j));
+ }
+ let rahu=mod(125.1228-.0529538083*d-ayan(j));out.Rahu=rahu;out.Ketu=mod(rahu+180);
+ return out;
+}
+function gmst(j){let T=(j-2451545)/36525;return mod(280.46061837+360.98564736629*(j-2451545)+.000387933*T*T-T*T*T/38710000)}
+function asc(date,lat,lon){
+ let j=jd(date),theta=rad(mod(gmst(j)+lon)),eps=rad(23.439291),phi=rad(lat);
+ let lam=deg(Math.atan2(-Math.cos(theta),Math.sin(theta)*Math.cos(eps)+Math.tan(phi)*Math.sin(eps)));
+ return mod(lam+180-ayan(j));
+}
+function nak(lon){let u=mod(lon)/(360/27),i=Math.floor(u),frac=u-i;return {i,frac,pada:Math.floor(frac*4)+1,lordIndex:i%9}}
+function signIndex(lon){return Math.floor(mod(lon)/30)}
+function navamsa(lon){
+ let s=signIndex(lon),part=Math.floor((mod(lon)%30)/(30/9)),start;
+ if([0,3,6,9].includes(s))start=s;
+ else if([1,4,7,10].includes(s))start=mod(s+8,12);
+ else start=mod(s+4,12);
+ return mod(start+part,12);
+}
+function toDate(y,m,d,h,min,ap,tz){
+ let hh=+h;if(ap==='PM'&&hh<12)hh+=12;if(ap==='AM'&&hh===12)hh=0;
+ let local=new Date(+y,+m-1,+d,hh,+min,0);
+ let offset=local.getTimezoneOffset();
+ if(tz==='Asia/Kolkata')offset=-330;
+ return new Date(Date.UTC(+y,+m-1,+d,hh,+min)-(-offset)*60000);
+}
+function chart(date,lat,lon){
+ let pos=positions(date),a=asc(date,+lat,+lon),mn=nak(pos.Moon);
+ return {date,pos,asc:a,ascSign:signIndex(a),moonSign:signIndex(pos.Moon),sunSign:signIndex(pos.Sun),moonNak:mn,nav:Object.fromEntries(Object.entries(pos).map(([p,l])=>[p,navamsa(l)])),ascNav:navamsa(a)};
+}
+function vimshottari(c,birth,at=new Date()){
+ let n=c.moonNak,startLord=n.lordIndex,elapsed=n.frac*DURATION[startLord],start=new Date(birth.getTime()-elapsed*365.2425*86400000),rows=[],cur=start;
+ for(let k=0;k<18;k++){let idx=(startLord+k)%9,end=new Date(cur.getTime()+DURATION[idx]*365.2425*86400000);rows.push({idx,start:new Date(cur),end});cur=end}
+ let md=rows.find(x=>at>=x.start&&at<x.end)||rows[0];
+ if(!md)return {md:null,ad:null};
+ let mdYears=DURATION[md.idx],mdMs=mdYears*365.2425*86400000,adStart=md.start,ad=null;
+ for(let k=0;k<9;k++){
+  let ai=(md.idx+k)%9,dur=mdMs*(DURATION[ai]/120),end=new Date(adStart.getTime()+dur);
+  if(at>=adStart&&at<end){ad={idx:ai,start:new Date(adStart),end};break}
+  adStart=end;
+ }
+ return {md,ad};
+}
+function tithi(date){let p=positions(date),diff=mod(p.Moon-p.Sun),n=Math.floor(diff/12)+1;return {n,index:(n-1)%15,paksha:n<=15?0:1}}
+function yoga(date){let p=positions(date);return Math.floor(mod(p.Sun+p.Moon)/(360/27))}
+function karana(date){let p=positions(date);return Math.floor(mod(p.Moon-p.Sun)/6)}
+function houseFrom(lon,ascSign){return mod(signIndex(lon)-ascSign,12)+1}
+function yogas(c){
+ let h={};for(const [p,l] of Object.entries(c.pos))h[p]=houseFrom(l,c.ascSign);
+ const ys=[];
+ if(signIndex(c.pos.Sun)===signIndex(c.pos.Mercury))ys.push(['Budha-Aditya','बुध-आदित्य']);
+ if([1,4,7,10].includes(mod(signIndex(c.pos.Jupiter)-c.moonSign,12)+1))ys.push(['Gaja Kesari','गज केसरी']);
+ if(signIndex(c.pos.Moon)===signIndex(c.pos.Mars))ys.push(['Chandra-Mangal','चंद्र-मंगल']);
+ const manglik=[1,2,4,7,8,12].includes(h.Mars);
+ return {ys,manglik,houses:h};
+}
+function sadeSati(moonSign,date=new Date()){
+ let sat=signIndex(positions(date).Saturn),rel=mod(sat-moonSign,12);
+ let code=rel===11?'phase1':rel===0?'phase2':rel===1?'phase3':(rel===3||rel===7?'dhaiya':'none');
+ return {sat,rel,code};
+}
+return {Z_HI,Z_EN,NAK_HI,NAK_EN,LORD_HI,LORD_EN,DURATION,P_EN,P_HI,mod,jd,ayan,positions,asc,nak,signIndex,navamsa,toDate,chart,vimshottari,tithi,yoga,karana,houseFrom,yogas,sadeSati};
+})();
+</script>
+
+<script>
+function fillS(){const L=RVLang(),Z=L==='hi'?RVAstro.Z_HI:RVAstro.Z_EN,old=sadeSign.value;sadeSign.innerHTML=Z.map((x,i)=>`<option value="${i}">${x}</option>`).join('');if(old!=='')sadeSign.value=old}
+
+function renderS(){const i=+sadeSign.value,st=RVAstro.sadeSati(i),L=RVLang(),Z=L==='hi'?RVAstro.Z_HI:RVAstro.Z_EN;
+ const msg={phase1:[`साढ़े साती का पहला चरण चल रहा है`,`First phase of Sade Sati is active`],phase2:[`साढ़े साती का दूसरा (मध्य) चरण चल रहा है`,`Second (middle) phase of Sade Sati is active`],phase3:[`साढ़े साती का अंतिम चरण चल रहा है`,`Final phase of Sade Sati is active`],dhaiya:[`इस समय शनि की ढैया चल रही है`,`Shani Dhaiya is active`],none:[`फिलहाल आपकी चंद्र राशि पर शनि की साढ़े साती या ढैया नहीं चल रही है।`,`At present, Sade Sati or Dhaiya is not active over your Moon sign.`]}[st.code];
+ const effect={phase1:[`यह चरण खर्च, स्थान परिवर्तन, मानसिक व्यस्तता और जिम्मेदारियों को बढ़ा सकता है। पुराने अधूरे काम सामने आ सकते हैं, इसलिए काम को टालने के बजाय क्रम से पूरा करना बेहतर रहेगा।`,`This phase can increase expenses, transitions, mental load and responsibilities. Old unfinished matters may return, so steady completion works better than delay.`],phase2:[`यह सबसे गहन चरण माना जाता है। काम, आत्मविश्वास, परिवार और स्वास्थ्य-संबंधी दिनचर्या में दबाव महसूस हो सकता है, लेकिन यही समय अनुशासन, धैर्य और लगातार मेहनत से मजबूत आधार भी बनाता है।`,`This is traditionally the most intense phase. Work, confidence, family and daily well-being may feel pressured, but discipline and consistency can also build a stronger foundation.`],phase3:[`यह चरण धीरे-धीरे पुराने दबावों को समेटने और व्यावहारिक स्थिरता की ओर लौटने का समय माना जाता है। धन, परिवार और जिम्मेदारियों में जल्दबाजी से बचना उपयोगी रहेगा।`,`This phase is traditionally associated with closing older pressures and returning toward practical stability. Avoid haste in money, family and responsibilities.`],dhaiya:[`ढैया के दौरान घर, काम, मानसिक शांति या अचानक जिम्मेदारियों में दबाव महसूस हो सकता है। योजनाओं को सरल रखें और जोखिम वाले फैसलों में अतिरिक्त सावधानी रखें।`,`During Dhaiya, home, work, peace of mind or sudden responsibilities can feel heavier. Keep plans simple and take extra care with risky decisions.`],none:[`शनि का सामान्य गोचर फिर भी काम, जिम्मेदारी और लंबे समय की योजनाओं पर असर डाल सकता है। इस समय साढ़े साती/ढैया का अलग दबाव नहीं माना जा रहा।`,`Saturn's normal transit can still influence work, responsibility and long-term plans, but there is no separate Sade Sati/Dhaiya pressure at present.`]}[st.code];
+ const caution=st.code==='none'?RVT('लंबे समय के कामों में अनुशासन बनाए रखें और केवल शनि के नाम पर अनावश्यक डर न रखें।','Maintain discipline in long-term work and avoid unnecessary fear around Saturn.'):RVT('जल्दबाजी, अनावश्यक विवाद, काम टालना, गलत शॉर्टकट और बिना सोचे आर्थिक जोखिम लेने से बचें। नियमित दिनचर्या और जिम्मेदार व्यवहार इस समय सबसे उपयोगी रहेगा।','Avoid haste, needless conflict, procrastination, shortcuts and unplanned financial risk. A steady routine and responsible conduct are especially useful now.');
+ const positive=st.code==='none'?RVT('स्थिर मेहनत, जिम्मेदारी और लंबे समय की योजना से अच्छे परिणाम लिए जा सकते हैं।','Steady effort, responsibility and long-term planning can work well.'):RVT('शनि का समय धैर्य, अनुशासन, जिम्मेदारी और वास्तविक प्राथमिकताएँ सिखाने वाला माना जाता है। सही दिशा में लगातार प्रयास करने पर यही समय मजबूत परिणामों की नींव बना सकता है।','Saturn periods are traditionally associated with patience, discipline, responsibility and clearer priorities. Consistent effort can build a strong foundation.');
+ const remedy=st.code==='none'?RVT('सामान्य रूप से शनिवार को सेवा, अनुशासन और जरूरतमंद की सहायता को शुभ माना जाता है।','As a general practice, service, discipline and helping someone in need on Saturday are traditionally considered positive.'):RVT('शनिवार को श्रद्धा से “ॐ शनैश्चराय नमः” का 11 या 108 बार जप करें। संध्या में सरसों के तेल का दीपक जलाना, जरूरतमंद को काला तिल/उड़द या उपयोगी वस्तु दान करना और श्रम करने वाले लोगों का सम्मान व सहायता करना पारंपरिक रूप से शुभ माना जाता है। हनुमान जी या शिव जी की नियमित उपासना भी मन को स्थिर रखने में सहायक मानी जाती है।','On Saturdays, traditionally recite “Om Sham Shanicharaya Namah” 11 or 108 times. Lighting a mustard-oil lamp in the evening, donating black sesame/urad or useful items, and respectfully helping people who do hard physical work are traditional practices. Regular prayer to Hanuman or Shiva is also commonly followed for steadiness.');
+ sadeResult.classList.remove('hidden');sadeResult.innerHTML=`<h2>${Z[i]}</h2><div class="kpi"><div class="card"><h3>${RVT('वर्तमान शनि स्थिति','Current Saturn Status')}</h3><strong>${L==='hi'?msg[0]:msg[1]}</strong></div><div class="card"><h3>${RVT('शनि राशि','Saturn Sign')}</h3><strong>${Z[st.sat]}</strong></div><div class="card"><h3>${RVT('चंद्र राशि से स्थिति','Position from Moon Sign')}</h3><strong>${st.rel+1}</strong></div></div><div class="report-section"><h3>${RVT('इस समय का प्रभाव','Likely Influence')}</h3><p>${L==='hi'?effect[0]:effect[1]}</p></div><div class="report-section"><h3>${RVT('किन बातों में सावधानी रखें','What to Watch')}</h3><p>${caution}</p></div><div class="report-section"><h3>${RVT('सकारात्मक पक्ष','Positive Side')}</h3><p>${positive}</p></div><div class="report-section"><h3>${RVT('शनि के उपाय','Traditional Shani Remedies')}</h3><p>${remedy}</p></div><p class="notice">${RVT('ज्योतिषीय जानकारी पारंपरिक मार्गदर्शन के लिए है।','Astrological information is for traditional guidance.')}</p>`;
+}
+document.addEventListener('DOMContentLoaded',()=>{fillS();sadeBtn.onclick=renderS;renderS()});document.addEventListener('rv-language',()=>{fillS();renderS()});
+</script>
+
+<script src="assets/language.js"></script>
+<script src="assets/popup.js"></script></body></html>

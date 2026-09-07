@@ -1,0 +1,37 @@
+<!doctype html><html lang="hi"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Login / Account | RashiVibe</title><meta name="description" content="RashiVibe login, account creation and saved astrology profiles.">
+<meta name="theme-color" content="#fff6e8"><link rel="icon" href="assets/rashivibe-icon.png"><link rel="stylesheet" href="assets/rashivibe.css">
+<script src="assets/account.js" defer></script><script src="assets/firebase-config.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-auth-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore-compat.js" defer></script>
+<script src="assets/login.js" defer></script>
+</head><body>
+<div class="topbar"><div class="container"><span class="brandline">ॐ • RashiVibe • Your Stars. Your Story.</span></div></div>
+<header><div class="container nav"><a class="brand" href="index.html"><img src="assets/rashivibe-logo.png" alt="RashiVibe"></a><nav class="navlinks" id="navlinks"><a href="index.html">होम</a><a href="free-kundli.html">कुंडली</a><a href="kundli-matching.html">कुंडली मिलान</a><a href="rashifal/index.html">राशिफल</a><a href="profile.html">मेरी प्रोफाइल</a><a href="ratna-salah.html" data-hi="रत्न सलाह" data-en="Gemstone Advice">रत्न सलाह</a></nav><button class="menu-btn" id="menuBtn" type="button">☰</button></div></header>
+<main><section class="section"><div class="container account-shell"><div class="section-title"><span class="badge">RashiVibe Account</span><h1 data-hi="Login या नया Account" data-en="Login or Create Account">Login या नया Account</h1><p data-hi="फोन OTP या Email से login करें, या नाम, email और phone number के साथ नया account बनाएँ।" data-en="Login with phone OTP or email, or create a new account with your name, email and phone number.">फोन OTP या Email से login करें, या नाम, email और phone number के साथ नया account बनाएँ।</p></div>
+<div class="account-card">
+<div class="auth-tabs" role="tablist"><button type="button" data-auth-tab="phone" class="active">मोबाइल OTP</button><button type="button" data-auth-tab="email">Email Login</button><button type="button" data-auth-tab="signup">नया Account</button></div>
+
+<div class="auth-panel" data-auth-panel="phone">
+<div class="field"><label>मोबाइल नंबर</label><div class="phone-row"><span>+91</span><input id="phone" type="tel" inputmode="numeric" maxlength="15" placeholder="10 अंकों का मोबाइल नंबर" autocomplete="tel"></div></div>
+<div id="recaptcha-container"></div><button id="sendOtp" class="btn primary requires-firebase" type="button">OTP भेजें</button>
+<div id="otpStep" class="hidden otp-step"><div class="field"><label>OTP</label><input id="otp" type="text" inputmode="numeric" maxlength="6" placeholder="6 digit OTP" autocomplete="one-time-code"></div><button id="verifyOtp" class="btn primary requires-firebase" type="button">OTP Verify करें</button></div>
+</div>
+
+<div class="auth-panel hidden" data-auth-panel="email">
+<div class="field"><label>Email</label><input id="loginEmail" type="email" placeholder="name@example.com" autocomplete="email"></div>
+<div class="field"><label>Password</label><input id="loginPassword" type="password" placeholder="Password" autocomplete="current-password"></div>
+<div class="auth-inline-actions"><button id="emailLoginBtn" class="btn primary requires-firebase" type="button">Email से Login</button><button id="forgotPassword" class="link-btn requires-firebase" type="button">Password भूल गए?</button></div>
+</div>
+
+<div class="auth-panel hidden" data-auth-panel="signup">
+<div class="form-grid account-signup-grid"><div class="field"><label>नाम</label><input id="signupName" type="text" placeholder="आपका नाम" autocomplete="name"></div><div class="field"><label>Email</label><input id="signupEmail" type="email" placeholder="name@example.com" autocomplete="email"></div><div class="field"><label>Phone Number</label><div class="phone-row"><span>+91</span><input id="signupPhone" type="tel" inputmode="numeric" maxlength="15" placeholder="10 अंकों का मोबाइल नंबर" autocomplete="tel"></div></div><div class="field"><label>Password</label><input id="signupPassword" type="password" placeholder="कम से कम 6 characters" autocomplete="new-password"></div><div class="field"><label>Password दोबारा</label><input id="signupConfirm" type="password" placeholder="Password confirm करें" autocomplete="new-password"></div></div>
+<button id="createAccountBtn" class="btn primary requires-firebase" type="button">Account बनाएँ</button><p class="account-note">Account बनाते समय email verification link भेजने की कोशिश की जाएगी। Phone number account contact के रूप में save होगा; OTP login अलग से उपलब्ध रहेगा।</p>
+</div>
+
+<div id="loginMsg" class="login-message" aria-live="polite"></div><div class="account-divider"><span>या</span></div><a class="btn ghost" href="profile.html?guest=1" data-hi="अतिथि के रूप में जारी रखें" data-en="Continue as Guest">अतिथि के रूप में जारी रखें</a><p class="account-note" data-hi="Guest mode में मुख्य tools इस्तेमाल किए जा सकते हैं। Cloud account/sync के लिए Firebase setup जरूरी है।" data-en="Guest mode can use the main tools. Firebase setup is required for cloud account/sync.">Guest mode में मुख्य tools इस्तेमाल किए जा सकते हैं। Cloud account/sync के लिए Firebase setup जरूरी है।</p>
+</div></div></section></main>
+<footer><div class="container footer-grid"><div><img src="assets/rashivibe-logo.png" alt="RashiVibe"><p>आधुनिक अनुभव के साथ पारंपरिक वैदिक ज्योतिष।</p></div><div><h3>महत्वपूर्ण</h3><div class="footer-links"><a href="privacy.html">गोपनीयता</a><a href="terms.html">नियम</a></div></div><div><h3>RashiVibe</h3><p>© 2026 RashiVibe</p></div></div></footer>
+<script>document.addEventListener('DOMContentLoaded',()=>{const m=document.getElementById('menuBtn'),n=document.getElementById('navlinks');if(m&&n)m.onclick=()=>n.classList.toggle('open')})</script><script src="assets/language.js"></script><script src="assets/popup.js"></script></body></html>
