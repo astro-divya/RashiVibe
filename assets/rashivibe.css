@@ -630,3 +630,318 @@ footer{background:linear-gradient(180deg,#f7e9d5,#f2dfc7)!important;border-top-c
 
 /* 404 artwork should not use dark-theme blend modes. */
 img[src*="rashivibe-icon"]{mix-blend-mode:normal!important}
+
+/* =========================================================
+   RashiVibe Light Theme — Brand visibility & hero art polish
+   2026-09-07
+   Final override: keeps the site light while giving the gold
+   logo/icon enough deep-maroon contrast to read clearly.
+   ========================================================= */
+
+/* Header brand plate: the gold logo was washing out on ivory. */
+header .brand{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex:0 0 auto!important;
+  padding:7px 14px 8px!important;
+  border-radius:16px!important;
+  background:
+    radial-gradient(circle at 22% 18%,rgba(255,219,146,.12),transparent 34%),
+    linear-gradient(145deg,#3f1b27 0%,#682a3b 54%,#4a1e2b 100%)!important;
+  border:1px solid rgba(177,112,47,.42)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,239,205,.10),
+    0 8px 20px rgba(77,31,42,.14)!important;
+}
+header .brand:hover{
+  border-color:rgba(194,132,57,.58)!important;
+  box-shadow:inset 0 1px 0 rgba(255,239,205,.13),0 10px 24px rgba(77,31,42,.18)!important;
+}
+header .brand img{
+  width:178px!important;
+  max-width:none!important;
+  max-height:56px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  filter:contrast(1.14) saturate(1.10) brightness(1.07) drop-shadow(0 1px 1px rgba(20,8,10,.42)) drop-shadow(0 0 7px rgba(226,166,75,.15))!important;
+}
+
+/* Hero visual zone: light page, but a soft plum/terracotta halo gives
+   the gold medallion enough separation without turning the page dark. */
+.home-page .hero-art{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:visible!important;
+}
+.home-page .hero-art:before{
+  content:""!important;
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:530px!important;
+  height:530px!important;
+  border-radius:50%!important;
+  z-index:-2!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(circle at 48% 45%,rgba(255,251,239,.98) 0 20%,rgba(255,235,204,.82) 36%,rgba(132,46,66,.17) 57%,rgba(187,103,45,.09) 68%,transparent 76%)!important;
+  box-shadow:0 22px 56px rgba(112,53,47,.08)!important;
+}
+.home-page .rv-aura-wrap{
+  position:relative!important;
+  width:520px!important;
+  height:520px!important;
+  display:grid!important;
+  place-items:center!important;
+  border-radius:50%!important;
+  background:radial-gradient(circle,rgba(255,252,243,.86) 0 31%,rgba(112,38,57,.085) 52%,rgba(191,112,44,.055) 66%,transparent 73%)!important;
+}
+
+/* Sri Yantra: exact center, dual-tone maroon + antique gold, more visible. */
+.home-page .rv-sri-yantra{
+  left:50%!important;
+  top:50%!important;
+  transform:translate(-50%,-50%)!important;
+  width:500px!important;
+  height:500px!important;
+  opacity:.42!important;
+  z-index:0!important;
+  filter:drop-shadow(0 0 4px rgba(98,34,50,.10)) drop-shadow(0 0 9px rgba(177,103,42,.10))!important;
+  background-position:center!important;
+  background-repeat:no-repeat!important;
+  background-size:contain!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cg fill='none'%3E%3Cg stroke='%23772f43' stroke-width='2.7' opacity='.94'%3E%3Ccircle cx='300' cy='300' r='260'/%3E%3Ccircle cx='300' cy='300' r='230'/%3E%3C/g%3E%3Cg stroke='%23b16b2d' stroke-width='2.5' opacity='.96'%3E%3Cpath d='M300 72 512 440H88Z M300 528 92 168h416Z M300 118 475 421H125Z M300 482 132 191h336Z M300 158 440 400H160Z M300 442 168 213h264Z M300 198 405 380H195Z M300 402 202 232h196Z M300 237 370 358H230Z'/%3E%3C/g%3E%3Ccircle cx='300' cy='300' r='7' fill='%23772f43' stroke='%23c07b35' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E")!important;
+}
+
+/* Main icon: slightly larger and crisper, with controlled shadow instead
+   of a pale glow that disappears into the cream background. */
+.home-page .hero-icon{
+  position:relative!important;
+  z-index:4!important;
+  width:420px!important;
+  max-width:420px!important;
+  height:auto!important;
+  margin:0!important;
+  object-fit:contain!important;
+  image-rendering:auto!important;
+  filter:
+    contrast(1.07) saturate(1.06)
+    drop-shadow(0 13px 18px rgba(75,35,31,.19))
+    drop-shadow(0 0 12px rgba(203,132,43,.24))
+    drop-shadow(0 0 30px rgba(124,42,58,.10))!important;
+}
+.home-page .rv-aura-wrap:before{
+  background:radial-gradient(circle,rgba(255,218,128,.34) 0 13%,rgba(224,147,50,.20) 27%,rgba(123,42,59,.105) 48%,rgba(123,42,59,.045) 62%,transparent 75%)!important;
+  filter:blur(11px)!important;
+}
+.home-page .rv-aura-wrap:after,.home-page .rv-aura-ring{
+  border-color:rgba(136,54,64,.18)!important;
+  box-shadow:0 0 20px rgba(190,116,43,.15),inset 0 0 20px rgba(126,45,60,.07)!important;
+}
+.home-page .rv-aura-particles i{
+  background:#a95d2f!important;
+  box-shadow:0 0 5px rgba(196,116,45,.74),0 0 11px rgba(120,43,58,.24)!important;
+  opacity:.72!important;
+}
+
+/* Footer logo gets the same contrast logic, but more restrained. */
+.footer-grid img[src*="rashivibe-logo"]{
+  padding:8px 12px!important;
+  border-radius:13px!important;
+  background:linear-gradient(145deg,#4a1f2c,#67293a)!important;
+  border:1px solid rgba(177,112,47,.28)!important;
+  filter:contrast(1.12) saturate(1.08) brightness(1.06) drop-shadow(0 5px 12px rgba(69,31,35,.12))!important;
+}
+
+@media(max-width:1180px) and (min-width:981px){
+  header .brand{padding:6px 10px 7px!important;border-radius:14px!important}
+  header .brand img{width:154px!important;max-height:52px!important}
+}
+@media(max-width:980px){
+  header .brand{padding:6px 10px!important;border-radius:14px!important}
+  header .brand img{width:150px!important;max-height:50px!important}
+  .home-page .hero-art:before{width:440px!important;height:440px!important}
+  .home-page .rv-aura-wrap{width:430px!important;height:430px!important}
+  .home-page .rv-sri-yantra{width:414px!important;height:414px!important;opacity:.40!important}
+  .home-page .hero-icon{width:350px!important;max-width:350px!important}
+}
+@media(max-width:680px){
+  header .brand{padding:5px 8px!important;border-radius:12px!important}
+  header .brand img{width:132px!important;max-height:43px!important}
+  .home-page .hero-art{min-height:355px!important}
+  .home-page .hero-art:before{width:345px!important;height:345px!important}
+  .home-page .rv-aura-wrap{width:336px!important;height:336px!important}
+  .home-page .rv-sri-yantra{width:326px!important;height:326px!important;opacity:.38!important}
+  .home-page .hero-icon{width:278px!important;max-width:82vw!important}
+}
+
+
+/* =========================================================
+   RashiVibe LIGHT THEME V3 — unmistakable palette + logo fix
+   This block MUST remain last in the stylesheet.
+   ========================================================= */
+:root{
+  --bg:#fff7ed!important;
+  --bg2:#fff0e6!important;
+  --panel:#fffdf9!important;
+  --panel2:#fff3ea!important;
+  --gold:#b96b24!important;
+  --gold2:#d89439!important;
+  --amber:#df8b36!important;
+  --maroon:#7b3145!important;
+  --text:#3c2a26!important;
+  --muted:#78645a!important;
+  --line:rgba(132,63,74,.16)!important;
+  --shadow:0 16px 38px rgba(109,61,50,.10)!important;
+}
+html,body{background:#fff7ed!important;color:#3c2a26!important}
+body{
+  background:
+    radial-gradient(circle at 8% 7%,rgba(240,160,93,.18),transparent 25%),
+    radial-gradient(circle at 88% 15%,rgba(157,75,92,.13),transparent 30%),
+    linear-gradient(180deg,#fff9f1 0%,#fff4e9 44%,#ffefe9 100%)!important;
+}
+.topbar{
+  background:#f7e3d8!important;
+  color:#6a453f!important;
+  border-bottom:1px solid rgba(123,49,69,.14)!important;
+}
+header{
+  background:rgba(255,248,240,.96)!important;
+  border-bottom:1px solid rgba(123,49,69,.16)!important;
+  box-shadow:0 7px 24px rgba(107,55,45,.08)!important;
+}
+.navlinks a{color:#5f4039!important}
+.navlinks a:hover,.navlinks a.active{
+  background:linear-gradient(135deg,#ffe7c6,#f8d8d7)!important;
+  color:#7b3145!important;
+  box-shadow:inset 0 0 0 1px rgba(123,49,69,.13)!important;
+}
+.lang-btn,.menu-btn{
+  background:#fff3e5!important;
+  color:#7b3145!important;
+  border-color:rgba(123,49,69,.20)!important;
+}
+.hero{
+  background:
+    linear-gradient(100deg,rgba(255,251,245,.92) 0 47%,rgba(255,232,224,.88) 100%)!important;
+  border-bottom:1px solid rgba(123,49,69,.10)!important;
+}
+.hero:before{
+  background:
+    radial-gradient(circle at 74% 42%,rgba(207,126,61,.16),transparent 24%),
+    radial-gradient(circle at 77% 42%,rgba(123,49,69,.13),transparent 38%)!important;
+}
+.kicker{
+  background:#fff0dc!important;
+  color:#8c4f24!important;
+  border-color:rgba(185,107,36,.25)!important;
+}
+h1,h2,h3{color:#402924!important}
+h1 .gold,.gold{
+  background:linear-gradient(180deg,#c77d28,#9b4d31 64%,#7b3145)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;
+}
+.lead,.section-title p,.card p{color:#78645a!important}
+.btn.primary{background:linear-gradient(135deg,#f2b357,#d98234 58%,#b85c32)!important;color:#3b241d!important}
+.btn.ghost{background:#fffaf5!important;color:#7b3145!important;border-color:rgba(123,49,69,.20)!important}
+.section:nth-of-type(even){background:rgba(255,236,229,.46)!important}
+.card,.form-card,.result,.report-section,.panchang-special,.match-chart-card,.rashi-hero-card,.account-card,.profile-sidebar,.match-profile-chooser{
+  background:linear-gradient(155deg,#fffefd,#fff5ee)!important;
+  border-color:rgba(123,49,69,.15)!important;
+  box-shadow:0 14px 34px rgba(106,57,47,.08)!important;
+}
+
+/* Hard reset old dark-theme blend rules that were making the gold PNG vanish. */
+.brand img,
+header .brand img,
+.footer-grid img[src*="rashivibe-logo"]{
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  visibility:visible!important;
+  isolation:isolate!important;
+}
+
+/* Header logo: clearly visible on a deep plum brand plate. */
+header .brand{
+  min-width:190px!important;
+  padding:7px 13px!important;
+  border-radius:15px!important;
+  background:linear-gradient(145deg,#542033,#7b3145 58%,#5f2638)!important;
+  border:1px solid rgba(190,128,59,.38)!important;
+  box-shadow:0 7px 18px rgba(80,31,47,.14)!important;
+}
+header .brand img{
+  width:178px!important;
+  height:auto!important;
+  max-height:56px!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  filter:saturate(1.13) contrast(1.12) brightness(1.12) drop-shadow(0 1px 1px rgba(24,8,11,.35))!important;
+}
+
+/* Hero icon and Sri Yantra: same center, more contrast on the light palette. */
+.home-page .hero-art:before{
+  width:540px!important;height:540px!important;
+  background:radial-gradient(circle,rgba(255,250,238,.98) 0 24%,rgba(246,205,153,.62) 39%,rgba(127,49,69,.17) 58%,rgba(127,49,69,.06) 70%,transparent 78%)!important;
+}
+.home-page .rv-aura-wrap{width:520px!important;height:520px!important;background:radial-gradient(circle,rgba(255,251,240,.88) 0 28%,rgba(239,181,111,.12) 48%,rgba(123,49,69,.09) 64%,transparent 75%)!important}
+.home-page .rv-sri-yantra{
+  left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;
+  width:500px!important;height:500px!important;opacity:.48!important;
+  filter:drop-shadow(0 0 5px rgba(123,49,69,.12)) drop-shadow(0 0 10px rgba(185,107,36,.10))!important;
+}
+.home-page .hero-icon{
+  width:424px!important;max-width:424px!important;
+  filter:saturate(1.08) contrast(1.08) drop-shadow(0 14px 18px rgba(85,40,34,.20)) drop-shadow(0 0 16px rgba(204,128,46,.28))!important;
+}
+
+/* Footer: light footer, but a deep brand panel so the gold logo can never disappear. */
+footer{
+  background:linear-gradient(180deg,#f4ded6 0%,#efd3cb 100%)!important;
+  color:#513a34!important;
+  border-top:1px solid rgba(123,49,69,.16)!important;
+}
+.footer-grid>div:first-child{
+  align-self:start!important;
+  padding:18px 20px!important;
+  border-radius:18px!important;
+  background:linear-gradient(145deg,#542033,#713044)!important;
+  border:1px solid rgba(190,128,59,.30)!important;
+  box-shadow:0 12px 26px rgba(83,36,50,.12)!important;
+}
+.footer-grid>div:first-child p{color:#f7e7d9!important;margin-top:10px!important}
+.footer-grid img[src*="rashivibe-logo"]{
+  display:block!important;
+  width:220px!important;
+  height:auto!important;
+  max-width:100%!important;
+  padding:0!important;
+  margin:0!important;
+  background:transparent!important;
+  border:0!important;
+  filter:saturate(1.14) contrast(1.13) brightness(1.15) drop-shadow(0 1px 1px rgba(22,7,10,.38))!important;
+}
+.footer-grid p,.footer-grid a{color:#654d44!important}
+.footer-grid a:hover{color:#8f4b35!important}
+
+@media(max-width:980px){
+  header .brand{min-width:0!important;padding:6px 10px!important}
+  header .brand img{width:150px!important;max-height:49px!important}
+  .navlinks{background:#fff9f2!important;border-color:rgba(123,49,69,.18)!important}
+  .home-page .hero-art:before{width:442px!important;height:442px!important}
+  .home-page .rv-aura-wrap{width:430px!important;height:430px!important}
+  .home-page .rv-sri-yantra{width:414px!important;height:414px!important;opacity:.45!important}
+  .home-page .hero-icon{width:350px!important;max-width:350px!important}
+}
+@media(max-width:680px){
+  header .brand{padding:5px 8px!important}
+  header .brand img{width:132px!important;max-height:43px!important}
+  .home-page .hero-art:before{width:346px!important;height:346px!important}
+  .home-page .rv-aura-wrap{width:336px!important;height:336px!important}
+  .home-page .rv-sri-yantra{width:326px!important;height:326px!important;opacity:.43!important}
+  .home-page .hero-icon{width:278px!important;max-width:82vw!important}
+  .footer-grid img[src*="rashivibe-logo"]{width:205px!important}
+}
